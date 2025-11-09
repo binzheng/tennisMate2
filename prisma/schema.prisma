@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+
+  @@index([name])
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?
+  access_token             String?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  refresh_token_expires_in Int?
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                                       String              @id @default(cuid())
+  userId                                   String?             @unique
+  name                                     String?
+  email                                    String?             @unique
+  emailVerified                            DateTime?
+  image                                    String?
+  role                                     Role                @default(player)
+  passwordHash                             String?
+  accounts                                 Account[]
+  LessonReservation                        LessonReservation[]
+  LessonSlot                               LessonSlot[]
+  MatchRequest                             MatchRequest[]
+  PlayerProfile                            PlayerProfile?
+  posts                                    Post[]
+  Reservation                              Reservation[]
+  ScoreRecord_ScoreRecord_opponentIdToUser ScoreRecord[]       @relation("ScoreRecord_opponentIdToUser")
+  ScoreRecord_ScoreRecord_playerIdToUser   ScoreRecord[]       @relation("ScoreRecord_playerIdToUser")
+  sessions                                 Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Court {
+  id          String        @id
+  name        String
+  facilityId  String
+  Facility    Facility      @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  LessonSlot  LessonSlot[]
+  Reservation Reservation[]
+
+  @@index([facilityId, name])
+}
+
+model Facility {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  Court     Court[]
+
+  @@index([name])
+}
+
+model ImportJob {
+  id         String    @id
+  type       String
+  source     String?
+  status     String    @default("pending")
+  createdAt  DateTime  @default(now())
+  finishedAt DateTime?
+  added      Int       @default(0)
+  updated    Int       @default(0)
+  removed    Int       @default(0)
+}
+
+model LessonPolicy {
+  id                  String   @id
+  lessonType          String   @unique
+  priceYen            Int?
+  cancelDeadlineHours Int?
+  penaltyApplicable   Boolean  @default(false)
+  createdAt           DateTime @default(now())
+}
+
+model LessonReservation {
+  id         String     @id
+  slotId     String
+  userId     String
+  status     String     @default("confirmed")
+  createdAt  DateTime   @default(now())
+  LessonSlot LessonSlot @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  User       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([slotId])
+  @@index([userId])
+}
+
+model LessonSlot {
+  id                String              @id
+  courtId           String
+  coachId           String?
+  capacity          Int                 @default(1)
+  start             DateTime
+  end               DateTime
+  createdAt         DateTime            @default(now())
+  LessonReservation LessonReservation[]
+  User              User?               @relation(fields: [coachId], references: [id])
+  Court             Court               @relation(fields: [courtId], references: [id], onDelete: Cascade)
+
+  @@index([courtId, start, end])
+}
+
+model MatchProposal {
+  id        String   @id
+  fromUser  String
+  toUser    String
+  start     DateTime
+  end       DateTime
+  message   String?
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+
+  @@index([toUser, status])
+}
+
+model MatchRequest {
+  id        String   @id
+  userId    String
+  start     DateTime
+  end       DateTime
+  levelMin  Int?
+  levelMax  Int?
+  area      String?
+  status    String   @default("open")
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([start, end])
+}
+
+model PlayerProfile {
+  id        String   @id
+  userId    String   @unique
+  level     Int      @default(3)
+  area      String?
+  available Json?
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Reservation {
+  id        String   @id
+  courtId   String
+  userId    String
+  start     DateTime
+  end       DateTime
+  createdAt DateTime @default(now())
+  Court     Court    @relation(fields: [courtId], references: [id], onDelete: Cascade)
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([courtId, start, end])
+  @@index([userId, start, end])
+}
+
+model ScoreRecord {
+  id                                String   @id
+  playerId                          String
+  opponentId                        String
+  date                              DateTime
+  result                            String
+  createdAt                         DateTime @default(now())
+  User_ScoreRecord_opponentIdToUser User     @relation("ScoreRecord_opponentIdToUser", fields: [opponentId], references: [id], onDelete: Cascade)
+  User_ScoreRecord_playerIdToUser   User     @relation("ScoreRecord_playerIdToUser", fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId, date])
+}
+
+enum Role {
+  player
+  coach
+  operator
+  admin
+}
