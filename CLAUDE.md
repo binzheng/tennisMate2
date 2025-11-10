@@ -32,9 +32,50 @@ npm run db:push            # スキーマをデータベースにプッシュ（
 npm run db:generate        # 新しいマイグレーションを作成して適用
 npm run db:migrate         # マイグレーションを本番環境にデプロイ
 npm run db:studio          # Prisma Studio GUIを開く (http://localhost:5555)
+npm run db:seed            # テストユーザーを作成
 ```
 
 **注意:** `prisma generate` は postinstall フックにより `npm install` 時に自動実行されます。
+
+### テスト
+```bash
+# 単体テスト
+npm run test               # watchモードでテスト実行
+npm run test:unit          # 単体テストのみ実行
+npm run test:ui            # UIモードでテスト実行
+npm run test:coverage      # カバレッジレポート生成
+
+# 統合テスト
+npm run test:integration   # 統合テストのみ実行
+
+# E2Eテスト
+npm run test:e2e           # E2Eテスト実行
+npm run test:e2e:ui        # UIモードでE2Eテスト実行
+npm run test:e2e:debug     # デバッグモードでE2Eテスト実行
+
+# すべてのテスト
+npm run test:all           # 単体・統合・E2Eすべて実行
+```
+
+**詳細:** テストの詳細については `docs/TESTING.md` を参照してください。
+
+## CI/CD
+
+GitHub Actionsによる継続的インテグレーション（CI）が設定されています。
+
+### 自動実行される内容
+
+- **Lint and Type Check**: コード品質チェックと型チェック
+- **Unit Tests**: 単体テスト
+- **Integration Tests**: データベースを使った統合テスト
+- **E2E Tests**: ブラウザを使ったE2Eテスト
+
+### トリガー
+
+- `master` または `main` ブランチへのプッシュ
+- `master` または `main` ブランチへのプルリクエスト
+
+**設定ファイル:** `.github/workflows/ci.yml`
 
 ## アーキテクチャ
 
@@ -286,13 +327,98 @@ type Role = "player" | "coach" | "operator" | "admin";
 
 ## テスト
 
-現在、テストのセットアップは存在しません。テストを実装する際は：
+このプロジェクトには包括的なテスト基盤が整っています。
 
-1. ユニットテストにはJestまたはVitestを使用
-2. ユースケースを独立してテスト（リポジトリをモック）
-3. テストデータベースに対してリポジトリをテスト
-4. モックコンテキストでtRPCルーターをテスト
-5. コンポーネントテストにはReact Testing Libraryを使用
+### テストの種類
+
+1. **単体テスト** (`tests/unit/`) - ドメインロジック、値オブジェクト、エンティティ、ユースケースのテスト
+2. **統合テスト** (`tests/integration/`) - リポジトリとデータベースの統合テスト
+3. **E2Eテスト** (`tests/e2e/`) - Playwrightによるブラウザテスト
+
+### テストファイルの配置
+
+```
+tests/
+├── unit/                    # 単体テスト
+│   └── user/
+│       ├── domain/          # ドメイン層のテスト
+│       │   ├── entities/
+│       │   └── value-objects/
+│       └── application/     # アプリケーション層のテスト
+│           └── use-cases/
+├── integration/             # 統合テスト
+│   └── user/
+│       └── infrastructure/
+│           └── repositories/
+├── e2e/                     # E2Eテスト
+│   ├── login.spec.ts
+│   └── users.spec.ts
+└── helpers/                 # テストヘルパー
+    ├── db-helper.ts
+    ├── mock-helper.ts
+    └── test-factory.ts
+```
+
+### テストの書き方
+
+**単体テスト例:**
+```typescript
+// tests/unit/user/domain/value-objects/password.vo.test.ts
+import { describe, it, expect } from "vitest";
+import { Password } from "~/modules/user/domain/value-objects/password.vo";
+
+describe("Password Value Object", () => {
+  it("8文字以上のパスワードでPasswordオブジェクトを作成できる", async () => {
+    const password = await Password.createFromPlainText("password123");
+    expect(password).toBeInstanceOf(Password);
+  });
+});
+```
+
+**統合テスト例:**
+```typescript
+// tests/integration/user/infrastructure/repositories/prisma-user.repository.integration.test.ts
+import { describe, it, beforeEach, afterAll } from "vitest";
+import { getTestDb, cleanupDatabase, disconnectDb } from "../../../../helpers/db-helper";
+
+describe("PrismaUserRepository Integration Test", () => {
+  const db = getTestDb();
+
+  beforeEach(async () => {
+    await cleanupDatabase();
+  });
+
+  afterAll(async () => {
+    await disconnectDb();
+  });
+
+  it("新しいユーザーを作成できる", async () => {
+    // テストコード
+  });
+});
+```
+
+### インポートのルール
+
+- ソースコードへのインポート: `~` エイリアスを使用
+  ```typescript
+  import { User } from "~/modules/user/domain/entities/user.entity";
+  ```
+- テストヘルパーへのインポート: 相対パスを使用
+  ```typescript
+  import { TestFactory } from "../../../helpers/test-factory";
+  ```
+
+### テストの実行
+
+```bash
+npm run test:unit          # 単体テストのみ
+npm run test:integration   # 統合テストのみ
+npm run test:e2e           # E2Eテストのみ
+npm run test:all           # すべてのテスト
+```
+
+**詳細:** 詳しくは `docs/TESTING.md` を参照してください。
 
 ## 追加リソース
 

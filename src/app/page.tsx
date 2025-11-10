@@ -55,7 +55,7 @@ export default async function Home() {
 							<div className="flex gap-4">
 								<Link
 									className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-									href={session ? "/api/auth/signout" : "/api/auth/signin"}
+									href={session ? "/api/auth/signout" : "/login"}
 								>
 									{session ? "Sign out" : "Sign in"}
 								</Link>
