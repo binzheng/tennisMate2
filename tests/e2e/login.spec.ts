@@ -19,10 +19,8 @@ test.describe("ログイン機能", () => {
 		await page.getByLabel("パスワード").fill("password123");
 		await page.getByRole("button", { name: "ログイン" }).click();
 
-		await page.waitForTimeout(3000); // 1秒待機
-
 		// ユーザーマスタページにリダイレクトされることを確認
-		await expect(page).toHaveURL(/\/users/);
+		await expect(page).toHaveURL(/\/users/,{timeout:10000});
 		await expect(page.getByRole("heading", { name: "ユーザーマスタ" })).toBeVisible();
 	});
 
@@ -84,9 +82,7 @@ test.describe("認証が必要なページへのアクセス", () => {
 		await page.getByLabel("パスワード").fill("password123");
 		await page.getByRole("button", { name: "ログイン" }).click();
 
-		await page.waitForTimeout(3000); // 3秒待機
-
 		// ユーザーマスタページにリダイレクトされることを確認
-		await expect(page).toHaveURL(/\/users/);
+		await expect(page).toHaveURL(/\/users/,{timeout:10000});
 	});
 });

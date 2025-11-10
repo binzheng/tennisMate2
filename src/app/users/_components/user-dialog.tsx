@@ -17,12 +17,20 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import type { z } from "zod";
-import { userFormSchema } from "~/lib/validations/user.schema";
+import {
+	userFormSchema,
+	userFormUpdateSchema,
+} from "~/lib/validations/user.schema";
 import { api } from "~/trpc/react";
 
-// Form data type inferred from the schema
-type UserFormData = z.infer<typeof userFormSchema>;
+// Form data type - 新規作成と編集で共通の型
+type UserFormData = {
+	userId: string;
+	name: string;
+	email: string;
+	password: string;
+	role: "player" | "coach" | "operator" | "admin";
+};
 
 interface UserDialogProps {
 	open: boolean;
@@ -42,8 +50,10 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		reset,
 		formState: { errors },
 	} = useForm<UserFormData>({
-		// Use userFormSchema for type safety, actual validation happens in mutation
-		resolver: zodResolver(userFormSchema),
+		// 編集時と新規作成時で異なるスキーマを使用
+		resolver: zodResolver(
+			isEditing ? userFormUpdateSchema : userFormSchema,
+		) as any,
 		mode: "onChange",
 		defaultValues: {
 			userId: "",
