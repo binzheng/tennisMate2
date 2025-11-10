@@ -2,7 +2,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { DefaultSession, NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
-import { env } from "~/env";
 import { Password } from "~/modules/user/domain/value-objects/password.vo";
 import { PrismaUserRepository } from "~/modules/user/infrastructure/repositories/prisma-user.repository";
 import { db } from "~/server/db";
@@ -83,10 +82,7 @@ export const authConfig = {
 				};
 			},
 		}),
-		// Discord認証情報が設定されている場合のみDiscordProviderを追加
-		...(env.AUTH_DISCORD_ID && env.AUTH_DISCORD_SECRET
-			? [DiscordProvider]
-			: []),
+		DiscordProvider,
 	],
 	adapter: PrismaAdapter(db),
 	session: {
