@@ -1,5 +1,7 @@
 "use client";
 
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import {
 	Alert,
 	Box,
@@ -7,15 +9,19 @@ import {
 	Card,
 	CardContent,
 	Container,
+	IconButton,
 	TextField,
+	Tooltip,
 	Typography,
 } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { useThemeMode } from "~/providers/theme-provider";
 
 export default function LoginPage() {
 	const searchParams = useSearchParams();
+	const { mode, toggleTheme } = useThemeMode();
 	const [isLoading, setIsLoading] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -56,8 +62,24 @@ export default function LoginPage() {
 					flexDirection: "column",
 					justifyContent: "center",
 					alignItems: "center",
+					position: "relative",
 				}}
 			>
+				{/* テーマ切り替えボタン */}
+				<Box
+					sx={{
+						position: "absolute",
+						top: 16,
+						right: 16,
+					}}
+				>
+					<Tooltip title={mode === "dark" ? "ライトモード" : "ダークモード"}>
+						<IconButton color="inherit" onClick={toggleTheme}>
+							{mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+						</IconButton>
+					</Tooltip>
+				</Box>
+
 				<Card sx={{ width: "100%", boxShadow: 3 }}>
 					<CardContent sx={{ p: 4 }}>
 						<Box sx={{ textAlign: "center", mb: 4 }}>

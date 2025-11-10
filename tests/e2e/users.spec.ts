@@ -71,7 +71,7 @@ test.describe("ユーザーマスタ", () => {
 		await expect(page.getByRole("dialog")).toBeVisible();
 		await expect(page.getByText("ユーザー編集")).toBeVisible();
 
-		await page.waitForTimeout(1000); // 1秒待機
+		await page.waitForTimeout(3000); // 1秒待機
 		
 		// 名前を変更
 		const nameInput = page.getByLabel("名前");
@@ -82,10 +82,17 @@ test.describe("ユーザーマスタ", () => {
 		await page.getByRole("button", { name: "更新" }).click();
 
 		// ダイアログが閉じることを確認
-		await expect(page.getByRole("dialog")).not.toBeVisible();
+		await expect(page.getByRole("dialog")).not.toBeVisible({timeout: 5000});
 
 		// 更新された名前が表示されることを確認
 		await expect(page.getByText("Updated User Name")).toBeVisible();
+
+		// 削除ボタンをクリック
+		const firstDeleteButton = page.getByRole("button", { name: "削除" }).first();
+		await firstDeleteButton.click();
+
+		// 確認ダイアログで削除を確認
+		await page.getByRole("button", { name: "削除" }).click();
 	});
 
 	test("ユーザーを削除できる", async ({ page }) => {

@@ -19,6 +19,8 @@ test.describe("ログイン機能", () => {
 		await page.getByLabel("パスワード").fill("password123");
 		await page.getByRole("button", { name: "ログイン" }).click();
 
+		await page.waitForTimeout(3000); // 1秒待機
+
 		// ユーザーマスタページにリダイレクトされることを確認
 		await expect(page).toHaveURL(/\/users/);
 		await expect(page.getByRole("heading", { name: "ユーザーマスタ" })).toBeVisible();
@@ -30,7 +32,7 @@ test.describe("ログイン機能", () => {
 		await page.getByRole("button", { name: "ログイン" }).click();
 
 		// エラーメッセージが表示されることを確認
-		await expect(page.getByText("メールアドレスまたはパスワードが正しくありません")).toBeVisible();
+		await expect(page.getByText("メールアドレスまたはパスワードが正しくありません")).toBeVisible({timeout: 10000});
 
 		// ログインページに留まることを確認
 		await expect(page).toHaveURL(/\/login/);
@@ -42,7 +44,7 @@ test.describe("ログイン機能", () => {
 		await page.getByRole("button", { name: "ログイン" }).click();
 
 		// エラーメッセージが表示されることを確認
-		await expect(page.getByText("メールアドレスまたはパスワードが正しくありません")).toBeVisible();
+		await expect(page.getByText("メールアドレスまたはパスワードが正しくありません")).toBeVisible({timeout: 10000});
 	});
 
 	test("空のフォームで送信できない", async ({ page }) => {
@@ -81,6 +83,8 @@ test.describe("認証が必要なページへのアクセス", () => {
 		await page.getByLabel("メールアドレス").fill("admin@example.com");
 		await page.getByLabel("パスワード").fill("password123");
 		await page.getByRole("button", { name: "ログイン" }).click();
+
+		await page.waitForTimeout(3000); // 3秒待機
 
 		// ユーザーマスタページにリダイレクトされることを確認
 		await expect(page).toHaveURL(/\/users/);

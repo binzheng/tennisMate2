@@ -1,14 +1,17 @@
 "use client";
 
 import { Add as AddIcon } from "@mui/icons-material";
+import DownloadIcon from "@mui/icons-material/Download";
+import FilterListIcon from "@mui/icons-material/FilterList";
 import {
 	Box,
-	Button,
 	CircularProgress,
-	Container,
+	IconButton,
+	Paper,
 	Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { MainLayout } from "~/components/layout/main-layout";
 import { api } from "~/trpc/react";
 import { UserDialog } from "./_components/user-dialog";
 import { UserTable } from "./_components/user-table";
@@ -35,40 +38,69 @@ export default function UsersPage() {
 	};
 
 	return (
-		<Container maxWidth="lg" sx={{ py: 4 }}>
+		<MainLayout>
 			<Box
 				sx={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					mb: 4,
+					maxWidth: 1200,
+					mx: "auto",
 				}}
 			>
-				<Typography component="h1" variant="h4">
-					ユーザーマスタ
-				</Typography>
-				<Button
-					onClick={handleCreate}
-					startIcon={<AddIcon />}
-					variant="contained"
+				<Paper
+					elevation={0}
+					sx={{
+						bgcolor: "background.paper",
+						borderRadius: 2,
+						overflow: "hidden",
+					}}
 				>
-					新規作成
-				</Button>
-			</Box>
+					{/* ヘッダー */}
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "center",
+							p: 3,
+							borderBottom: 1,
+							borderColor: "divider",
+						}}
+					>
+						<Typography component="h1" variant="h5">
+							ユーザーマスタ
+						</Typography>
+						<Box sx={{ display: "flex", gap: 1 }}>
+							<IconButton
+								color="primary"
+								onClick={handleCreate}
+								size="small"
+								title="新規作成"
+							>
+								<AddIcon />
+							</IconButton>
+							<IconButton color="primary" size="small" title="フィルター">
+								<FilterListIcon />
+							</IconButton>
+							<IconButton color="primary" size="small" title="エクスポート">
+								<DownloadIcon />
+							</IconButton>
+						</Box>
+					</Box>
 
-			{isLoading ? (
-				<Box sx={{ display: "flex", justifyContent: "center", py: 4 }}>
-					<CircularProgress />
-				</Box>
-			) : (
-				<UserTable onEdit={handleEdit} users={users ?? []} />
-			)}
+					{/* コンテンツ */}
+					{isLoading ? (
+						<Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
+							<CircularProgress />
+						</Box>
+					) : (
+						<UserTable onEdit={handleEdit} users={users ?? []} />
+					)}
+				</Paper>
+			</Box>
 
 			<UserDialog
 				onClose={handleClose}
 				open={isDialogOpen}
 				userId={editingUserId}
 			/>
-		</Container>
+		</MainLayout>
 	);
 }
