@@ -89,18 +89,48 @@ npm run test:e2e:ui
 
 # デバッグモードでE2Eテストを実行
 npm run test:e2e:debug
+
+# E2E用データベースを手動でセットアップ（通常は不要）
+npm run db:setup-e2e
 ```
 
-**重要:** E2Eテストを実行する前に：
+**重要:** E2Eテストのデータベース準備について
 
-1. テストユーザーを作成してください：
-```bash
-npm run db:seed
+E2Eテストは **自動的に** データベースをセットアップします：
+
+1. **自動セットアップ（推奨）**
+   - `npm run test:e2e` を実行すると、Playwrightの `globalSetup` が自動実行されます
+   - データベースがクリーンアップされ、テストユーザーが作成されます
+   - 手動での準備は **不要** です
+
+2. **手動セットアップ（必要な場合のみ）**
+   ```bash
+   # データベースを手動でリセット・セットアップする場合
+   npm run db:setup-e2e
+   ```
+
+3. **初回のみ必要な準備**
+   ```bash
+   # Playwrightブラウザをインストール（初回のみ）
+   npx playwright install
+   ```
+
+**セットアップの仕組み:**
+
+E2Eテスト実行時に以下が自動実行されます：
+
 ```
-
-2. Playwrightブラウザをインストールしてください（初回のみ）：
-```bash
-npx playwright install
+tests/global-setup.ts
+  ↓
+scripts/setup-e2e-db.ts
+  ↓
+1. データベース全体をクリーンアップ
+2. テストユーザーを作成
+   - admin@example.com (管理者)
+   - operator@example.com (オペレーター)
+   - coach@example.com (コーチ)
+   - player@example.com (プレイヤー)
+   - すべてパスワード: password123
 ```
 
 ### すべてのテストを実行
@@ -210,6 +240,8 @@ test("有効な認証情報でログインできる", async ({ page }) => {
   await expect(page).toHaveURL(/\/users/);
 });
 ```
+
+**重要:** Playwrightは日本語ロケール（`ja-JP`）とタイムゾーン（`Asia/Tokyo`）に設定されています。これにより、エラーメッセージやUIテキストが日本語で表示されます。
 
 ## テストヘルパー
 

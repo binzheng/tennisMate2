@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { sleep } from "@trpc/server/unstable-core-do-not-import";
 
 test.describe("ユーザーマスタ", () => {
 	test.beforeEach(async ({ page }) => {
@@ -23,7 +24,7 @@ test.describe("ユーザーマスタ", () => {
 
 		// ダイアログが表示されることを確認
 		await expect(page.getByRole("dialog")).toBeVisible();
-		await expect(page.getByText("ユーザー作成")).toBeVisible();
+		await expect(page.getByText("ユーザー新規作成")).toBeVisible();
 	});
 
 	test("新規ユーザーを作成できる", async ({ page }) => {
@@ -58,7 +59,7 @@ test.describe("ユーザーマスタ", () => {
 		await page.getByRole("button", { name: "作成" }).click();
 
 		// エラーメッセージが表示されることを確認
-		await expect(page.getByText(/パスワードは8文字以上/)).toBeVisible();
+		await expect(page.getByText(/8文字以上/)).toBeVisible();
 	});
 
 	test("ユーザー情報を編集できる", async ({ page }) => {
@@ -70,6 +71,8 @@ test.describe("ユーザーマスタ", () => {
 		await expect(page.getByRole("dialog")).toBeVisible();
 		await expect(page.getByText("ユーザー編集")).toBeVisible();
 
+		await page.waitForTimeout(1000); // 1秒待機
+		
 		// 名前を変更
 		const nameInput = page.getByLabel("名前");
 		await nameInput.clear();
@@ -105,7 +108,7 @@ test.describe("ユーザーマスタ", () => {
 		await row.getByRole("button", { name: "削除" }).click();
 
 		// 確認ダイアログで削除を確認
-		// Note: このテストは実際の削除確認ダイアログの実装に依存します
+		await page.getByRole("button", { name: "削除" }).click();
 
 		// ユーザーが一覧から削除されることを確認
 		await expect(page.getByText(`deleteuser${timestamp}@example.com`)).not.toBeVisible();

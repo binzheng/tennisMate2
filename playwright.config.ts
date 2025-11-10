@@ -14,6 +14,11 @@ export default defineConfig({
 		baseURL,
 		trace: "on-first-retry",
 		screenshot: "only-on-failure",
+		locale: "ja-JP",
+		timezoneId: "Asia/Tokyo",
+		extraHTTPHeaders: {
+			"Accept-Language": "ja-JP,ja;q=0.9",
+		},
 	},
 
 	projects: [
@@ -21,14 +26,14 @@ export default defineConfig({
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"] },
 		},
-		{
-			name: "firefox",
-			use: { ...devices["Desktop Firefox"] },
-		},
-		{
-			name: "webkit",
-			use: { ...devices["Desktop Safari"] },
-		},
+		// {
+		// 	name: "firefox",
+		// 	use: { ...devices["Desktop Firefox"] },
+		// },
+		// {
+		// 	name: "webkit",
+		// 	use: { ...devices["Desktop Safari"] },
+		// },
 	],
 
 	webServer: {

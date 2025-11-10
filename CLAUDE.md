@@ -33,6 +33,7 @@ npm run db:generate        # 新しいマイグレーションを作成して適
 npm run db:migrate         # マイグレーションを本番環境にデプロイ
 npm run db:studio          # Prisma Studio GUIを開く (http://localhost:5555)
 npm run db:seed            # テストユーザーを作成
+npm run db:setup-e2e       # E2Eテスト用データベースをセットアップ
 ```
 
 **注意:** `prisma generate` は postinstall フックにより `npm install` 時に自動実行されます。
