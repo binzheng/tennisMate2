@@ -41,7 +41,7 @@ export default function UsersPage() {
 		<MainLayout>
 			<Box
 				sx={{
-					maxWidth: 1200,
+					maxWidth: { xs: "100%", lg: 1200 },
 					mx: "auto",
 				}}
 			>
@@ -59,12 +59,18 @@ export default function UsersPage() {
 							display: "flex",
 							justifyContent: "space-between",
 							alignItems: "center",
-							p: 3,
+							p: { xs: 2, sm: 3 },
 							borderBottom: 1,
 							borderColor: "divider",
+							flexWrap: { xs: "wrap", sm: "nowrap" },
+							gap: 2,
 						}}
 					>
-						<Typography component="h1" variant="h5">
+						<Typography
+							component="h1"
+							sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
+							variant="h5"
+						>
 							ユーザーマスタ
 						</Typography>
 						<Box sx={{ display: "flex", gap: 1 }}>
@@ -76,10 +82,20 @@ export default function UsersPage() {
 							>
 								<AddIcon />
 							</IconButton>
-							<IconButton color="primary" size="small" title="フィルター">
+							<IconButton
+								color="primary"
+								size="small"
+								sx={{ display: { xs: "none", sm: "inline-flex" } }}
+								title="フィルター"
+							>
 								<FilterListIcon />
 							</IconButton>
-							<IconButton color="primary" size="small" title="エクスポート">
+							<IconButton
+								color="primary"
+								size="small"
+								sx={{ display: { xs: "none", sm: "inline-flex" } }}
+								title="エクスポート"
+							>
 								<DownloadIcon />
 							</IconButton>
 						</Box>

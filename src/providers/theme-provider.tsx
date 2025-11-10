@@ -1,7 +1,13 @@
 "use client";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createContext, type ReactNode, useContext, useState } from "react";
+import {
+	createContext,
+	type ReactNode,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import { darkTheme, lightTheme } from "~/theme/theme";
 
 type ThemeMode = "light" | "dark";
@@ -22,13 +28,41 @@ export function useThemeMode() {
 }
 
 export function AppThemeProvider({ children }: { children: ReactNode }) {
+	const [mounted, setMounted] = useState(false);
 	const [mode, setMode] = useState<ThemeMode>("dark");
 
+	// クライアントサイドでのみ実行
+	useEffect(() => {
+		setMounted(true);
+		// localStorageからテーマを読み込む
+		const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
+		if (savedTheme) {
+			setMode(savedTheme);
+		}
+	}, []);
+
 	const toggleTheme = () => {
-		setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+		setMode((prevMode) => {
+			const newMode = prevMode === "light" ? "dark" : "light";
+			// localStorageに保存
+			localStorage.setItem("theme", newMode);
+			return newMode;
+		});
 	};
 
 	const theme = mode === "dark" ? darkTheme : lightTheme;
+
+	// マウント前はダークテーマで統一（hydrationエラー防止）
+	if (!mounted) {
+		return (
+			<ThemeContext.Provider value={{ mode: "dark", toggleTheme: () => {} }}>
+				<ThemeProvider theme={darkTheme}>
+					<CssBaseline />
+					{children}
+				</ThemeProvider>
+			</ThemeContext.Provider>
+		);
+	}
 
 	return (
 		<ThemeContext.Provider value={{ mode, toggleTheme }}>

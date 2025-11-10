@@ -17,53 +17,12 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
+import type { z } from "zod";
+import { userFormSchema } from "~/lib/validations/user.schema";
 import { api } from "~/trpc/react";
 
-// バリデーションスキーマ（新規作成用）
-const createUserFormSchema = z.object({
-	userId: z
-		.string()
-		.min(3, "ユーザーIDは3文字以上で入力してください")
-		.max(50, "ユーザーIDは50文字以内で入力してください"),
-	name: z
-		.string()
-		.min(1, "名前は必須です")
-		.max(100, "名前は100文字以内で入力してください"),
-	email: z
-		.string()
-		.email("有効なメールアドレスを入力してください")
-		.optional()
-		.or(z.literal("")),
-	password: z.string().min(8, "パスワードは8文字以上で入力してください"),
-	role: z.enum(["player", "coach", "operator", "admin"]),
-});
-
-// バリデーションスキーマ（編集用）
-const updateUserFormSchema = z.object({
-	userId: z
-		.string()
-		.min(3, "ユーザーIDは3文字以上で入力してください")
-		.max(50, "ユーザーIDは50文字以内で入力してください"),
-	name: z
-		.string()
-		.min(1, "名前は必須です")
-		.max(100, "名前は100文字以内で入力してください"),
-	email: z
-		.string()
-		.email("有効なメールアドレスを入力してください")
-		.optional()
-		.or(z.literal("")),
-	password: z
-		.string()
-		.refine(
-			(val) => val === "" || val.length >= 8,
-			"パスワードは8文字以上で入力してください",
-		),
-	role: z.enum(["player", "coach", "operator", "admin"]),
-});
-
-type UserFormData = z.infer<typeof createUserFormSchema>;
+// Form data type inferred from the schema
+type UserFormData = z.infer<typeof userFormSchema>;
 
 interface UserDialogProps {
 	open: boolean;
@@ -83,9 +42,9 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		reset,
 		formState: { errors },
 	} = useForm<UserFormData>({
-		resolver: zodResolver(
-			isEditing ? updateUserFormSchema : createUserFormSchema,
-		),
+		// Use userFormSchema for type safety, actual validation happens in mutation
+		resolver: zodResolver(userFormSchema),
+		mode: "onChange",
 		defaultValues: {
 			userId: "",
 			name: "",

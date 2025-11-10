@@ -1,6 +1,10 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
+import {
+	createUserSchema,
+	updateUserSchema,
+} from "~/lib/validations/user.schema";
 import { CreateUserUseCase } from "~/modules/user/application/use-cases/create-user.use-case";
 import { DeleteUserUseCase } from "~/modules/user/application/use-cases/delete-user.use-case";
 import { GetUserByIdUseCase } from "~/modules/user/application/use-cases/get-user-by-id.use-case";
@@ -47,18 +51,7 @@ export const userRouter = createTRPCRouter({
 
 	// ユーザー作成
 	create: adminProcedure
-		.input(
-			z.object({
-				userId: z.string().min(3, "ユーザーIDは3文字以上必要です"),
-				name: z.string().min(1, "名前は必須です"),
-				email: z
-					.string()
-					.email("有効なメールアドレスを入力してください")
-					.optional(),
-				password: z.string().min(8, "パスワードは8文字以上必要です"),
-				role: z.enum(["player", "coach", "operator", "admin"]),
-			}),
-		)
+		.input(createUserSchema)
 		.mutation(async ({ ctx, input }) => {
 			const repository = new PrismaUserRepository(ctx.db);
 			const useCase = new CreateUserUseCase(repository);
@@ -75,19 +68,7 @@ export const userRouter = createTRPCRouter({
 
 	// ユーザー更新
 	update: adminProcedure
-		.input(
-			z.object({
-				id: z.string(),
-				userId: z.string().min(3, "ユーザーIDは3文字以上必要です").optional(),
-				name: z.string().min(1, "名前は必須です").optional(),
-				email: z
-					.string()
-					.email("有効なメールアドレスを入力してください")
-					.optional(),
-				password: z.string().min(8, "パスワードは8文字以上必要です").optional(),
-				role: z.enum(["player", "coach", "operator", "admin"]).optional(),
-			}),
-		)
+		.input(updateUserSchema)
 		.mutation(async ({ ctx, input }) => {
 			const { id, ...updateData } = input;
 			const repository = new PrismaUserRepository(ctx.db);

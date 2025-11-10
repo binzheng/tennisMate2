@@ -109,7 +109,7 @@ export function Header({ onMenuClick }: HeaderProps) {
 					<MenuIcon />
 				</IconButton>
 
-				<Search>
+				<Search sx={{ display: { xs: "none", sm: "block" } }}>
 					<SearchIconWrapper>
 						<SearchIcon />
 					</SearchIconWrapper>
@@ -121,18 +121,28 @@ export function Header({ onMenuClick }: HeaderProps) {
 
 				<Box sx={{ flexGrow: 1 }} />
 
-				<Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+				<Box
+					sx={{
+						display: "flex",
+						gap: { xs: 0.5, sm: 1 },
+						alignItems: "center",
+					}}
+				>
 					<Tooltip title={mode === "dark" ? "ライトモード" : "ダークモード"}>
-						<IconButton color="inherit" onClick={toggleTheme}>
+						<IconButton color="inherit" onClick={toggleTheme} size="small">
 							{mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
 						</IconButton>
 					</Tooltip>
 
-					<IconButton color="inherit">
+					<IconButton
+						color="inherit"
+						size="small"
+						sx={{ display: { xs: "none", md: "inline-flex" } }}
+					>
 						<SettingsIcon />
 					</IconButton>
 
-					<IconButton color="inherit">
+					<IconButton color="inherit" size="small">
 						<Badge badgeContent={4} color="error">
 							<NotificationsIcon />
 						</Badge>

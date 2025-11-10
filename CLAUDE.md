@@ -112,9 +112,11 @@ tRPCプロシージャを作成する際は、以下のパターンに従って�
 
 ```typescript
 // src/server/api/routers/feature.ts
+import { createFeatureSchema } from "~/lib/validations/feature.schema";
+
 export const featureRouter = createTRPCRouter({
   action: adminProcedure
-    .input(z.object({ /* ... */ }))
+    .input(createFeatureSchema)  // 共有スキーマを使用
     .mutation(async ({ ctx, input }) => {
       const repository = new PrismaFeatureRepository(ctx.db);
       const useCase = new ActionUseCase(repository);
@@ -137,6 +139,37 @@ export const appRouter = createTRPCRouter({
   feature: featureRouter,
 });
 ```
+
+### バリデーションスキーマの管理
+
+クライアントとサーバーでバリデーションロジックを共有するため、スキーマは `src/lib/validations/` に定義します：
+
+```typescript
+// src/lib/validations/feature.schema.ts
+import { z } from "zod";
+
+// サーバー側で使用するスキーマ（API入力）
+export const createFeatureSchema = z.object({
+  name: z.string().min(1, "名前は必須です"),
+  // ...
+});
+
+export const updateFeatureSchema = z.object({
+  id: z.string(),
+  name: z.string().min(1, "名前は必須です").optional(),
+  // ...
+});
+
+// クライアント側フォームで使用するスキーマ
+export const featureFormSchema = createFeatureSchema.omit({ /* 除外フィールド */ });
+export const featureFormUpdateSchema = updateFeatureSchema.omit({ id: true });
+
+// 型エクスポート
+export type CreateFeatureInput = z.infer<typeof createFeatureSchema>;
+export type UpdateFeatureInput = z.infer<typeof updateFeatureSchema>;
+```
+
+**参考実装:** `src/lib/validations/user.schema.ts` と `src/server/api/routers/user.ts`
 
 ## データベーススキーマ
 
@@ -206,6 +239,70 @@ DATABASE_URL=postgresql://postgres:password@localhost:5432/tennis_mate_2
   - tRPCのミューテーション/クエリを使用する場合
   - ユーザーインタラクションを処理する場合
 
+### レイアウトシステム
+
+アプリケーションは以下のレイアウトコンポーネントで構成されています：
+
+- **Header** (`src/components/layout/header.tsx`):
+  - 検索バー
+  - 通知アイコン
+  - ライト/ダークモード切り替えボタン
+  - ユーザーメニュー（プロフィール、ログアウト）
+  - レスポンシブ対応（モバイルでは一部要素を非表示）
+
+- **Sidebar** (`src/components/layout/sidebar.tsx`):
+  - ナビゲーションメニュー
+  - マスタメニューの折りたたみ機能
+  - レスポンシブ対応（モバイル: temporary、デスクトップ: persistent）
+
+- **MainLayout** (`src/components/layout/main-layout.tsx`):
+  - Header + Sidebar + Contentのレイアウト統合
+  - ページ遷移時のサイドバー自動クローズ（モバイル）
+
+### テーマシステム
+
+ライト/ダークモードのテーマ切り替えを実装：
+
+- **ThemeProvider** (`src/providers/theme-provider.tsx`):
+  - `useThemeMode()` フックでテーマ状態とトグル関数を提供
+  - localStorageに設定を保存
+  - SSR/クライアント間のハイドレーションエラーを回避
+
+- **テーマ定義** (`src/theme/theme.ts`):
+  - `lightTheme` と `darkTheme` をMUIのcreateThemeで定義
+  - テーブル、Paper、ボタンなどのカスタマイズ
+
+```typescript
+// テーマの使用例
+import { useThemeMode } from "~/providers/theme-provider";
+
+function MyComponent() {
+  const { mode, toggleTheme } = useThemeMode();
+  // ...
+}
+```
+
+### フォーム管理
+
+**React Hook Form + Zod** を使用した型安全なフォーム管理：
+
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { userFormSchema } from "~/lib/validations/user.schema";
+
+const {
+  control,
+  handleSubmit,
+  formState: { errors },
+} = useForm({
+  resolver: zodResolver(userFormSchema),
+  defaultValues: { /* ... */ },
+});
+```
+
+**重要:** バリデーションスキーマは `src/lib/validations/` に共通定義し、クライアントとサーバーで共有してください。
+
 ### tRPCクライアントの使用方法
 
 ```typescript
@@ -232,9 +329,47 @@ const mutation = api.user.create.useMutation({
 よく使うMUIパターン：
 - `Container maxWidth="lg"` - ページレイアウト用
 - `Box sx={{ ... }}` - flexレイアウト用
-- `Dialog` - モーダル用
+- `Dialog` - モーダル用（標準のalert/confirmは使用禁止）
 - `Table` コンポーネント - データテーブル用
 - `Chip` - バッジとタグ用
+- `Backdrop` + `CircularProgress` - ローディング表示
+- `TablePagination` - ページネーション
+
+**レスポンシブデザイン:**
+```typescript
+// MUIのsxプロパティでブレークポイント対応
+<TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+  内容
+</TableCell>
+```
+
+ブレークポイント：
+- `xs`: 0px（モバイル）
+- `sm`: 600px（タブレット）
+- `md`: 900px（小型デスクトップ）
+- `lg`: 1200px（デスクトップ）
+
+### ダイアログの使用
+
+**標準のalert/confirmは使用禁止** です。代わりにMUIの`Dialog`コンポーネントを使用：
+
+```typescript
+// 確認ダイアログの例
+<Dialog open={confirmOpen} onClose={handleClose}>
+  <DialogTitle>確認</DialogTitle>
+  <DialogContent>
+    <DialogContentText>
+      この操作を実行してもよろしいですか？
+    </DialogContentText>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleClose}>キャンセル</Button>
+    <Button onClick={handleConfirm} variant="contained">
+      実行
+    </Button>
+  </DialogActions>
+</Dialog>
+```
 
 ## コードスタイルと規約
 
