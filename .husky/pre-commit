@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# 1. コードスタイルチェック
+echo "📝 Checking code style..."
+npm run check
+if [ $? -ne 0 ]; then
+  echo "❌ Code style check failed. Run 'npm run check:write' to fix."
+  exit 1
+fi
+
+# 2. 型チェック
+echo "🔧 Type checking..."
+npm run typecheck
+if [ $? -ne 0 ]; then
+  echo "❌ Type check failed. Fix type errors before committing."
+  exit 1
+fi
+
+# 3. 単体テスト（変更されたファイルのみ）
+echo "🧪 Running unit tests..."
+npm run test:unit -- --run --reporter=verbose
+if [ $? -ne 0 ]; then
+  echo "❌ Unit tests failed. Fix failing tests before committing."
+  exit 1
+fi
+
+echo "✅ All pre-commit checks passed!"
