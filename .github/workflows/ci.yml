@@ -75,6 +75,7 @@ jobs:
     name: Integration Tests
     runs-on: ubuntu-latest
     if: inputs.test_type == 'all' || inputs.test_type == 'integration'
+    needs: unit-tests
     services:
       postgres:
         image: postgres:16
@@ -117,6 +118,7 @@ jobs:
     name: E2E Tests
     runs-on: ubuntu-latest
     if: inputs.test_type == 'all' || inputs.test_type == 'e2e'
+    needs: [unit-tests, integration-tests]
     services:
       postgres:
         image: postgres:16
