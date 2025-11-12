@@ -51,9 +51,7 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		formState: { errors },
 	} = useForm<UserFormData>({
 		// 編集時と新規作成時で異なるスキーマを使用
-		resolver: zodResolver(
-			isEditing ? userFormUpdateSchema : userFormSchema,
-		) as any,
+		resolver: zodResolver(isEditing ? userFormUpdateSchema : userFormSchema),
 		mode: "onChange",
 		defaultValues: {
 			userId: "",
