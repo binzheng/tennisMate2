@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# コミットメッセージの検証
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+echo "📝 Validating commit message..."
+
+# コミットメッセージが空でないことを確認
+if [ -z "$commit_msg" ]; then
+  echo "❌ Commit message cannot be empty."
+  exit 1
+fi
+
+# 推奨フォーマットのチェック（緩い検証）
+# 例: "feat: add user authentication" または "fix: resolve login issue"
+if ! echo "$commit_msg" | grep -qE "^(feat|fix|refactor|test|docs|style|chore|perf|ci|build|revert)(\(.+\))?: .+"; then
+  echo "⚠️  Warning: Commit message does not follow conventional format."
+  echo "   Recommended format: <type>: <subject>"
+  echo "   Types: feat, fix, refactor, test, docs, style, chore, perf, ci, build, revert"
+  echo ""
+  echo "   Example: feat: add user authentication"
+  echo ""
+  echo "   Proceeding anyway..."
+fi
+
+echo "✅ Commit message validated!"
