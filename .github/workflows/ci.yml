@@ -28,7 +28,7 @@ jobs:
   lint-and-typecheck:
     name: Lint and Type Check
     runs-on: ubuntu-latest
-    if: inputs.test_type == 'all' || inputs.test_type == 'lint'
+    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'lint'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -59,7 +59,7 @@ jobs:
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    if: inputs.test_type == 'all' || inputs.test_type == 'unit' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
+    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'unit' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -79,7 +79,7 @@ jobs:
   integration-tests:
     name: Integration Tests
     runs-on: ubuntu-latest
-    if: inputs.test_type == 'all' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
+    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
     needs: unit-tests
     services:
       postgres:
@@ -122,7 +122,7 @@ jobs:
   e2e-tests:
     name: E2E Tests
     runs-on: ubuntu-latest
-    if: inputs.test_type == 'all' || inputs.test_type == 'e2e'
+    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'e2e'
     needs: [unit-tests, integration-tests]
     services:
       postgres:
