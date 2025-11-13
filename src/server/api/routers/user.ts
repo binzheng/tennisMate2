@@ -32,6 +32,20 @@ export const userRouter = createTRPCRouter({
 		return await useCase.execute();
 	}),
 
+	// コーチ一覧取得
+	getCoaches: adminProcedure.query(async ({ ctx }) => {
+		const coaches = await ctx.db.user.findMany({
+			where: { role: "coach" },
+			select: {
+				id: true,
+				userId: true,
+				name: true,
+			},
+			orderBy: { name: "asc" },
+		});
+		return coaches;
+	}),
+
 	// ユーザーID検索
 	getById: adminProcedure
 		.input(z.object({ id: z.string() }))

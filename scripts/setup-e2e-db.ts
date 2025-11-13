@@ -1,6 +1,17 @@
+import { PrismaClient } from "../generated/prisma/index.js";
 import { CreateUserUseCase } from "../src/modules/user/application/use-cases/create-user.use-case";
 import { PrismaUserRepository } from "../src/modules/user/infrastructure/repositories/prisma-user.repository";
-import { db } from "../src/server/db";
+
+// E2Eテスト用のPrismaClientを直接作成（環境変数のバリデーションをスキップ）
+const db = new PrismaClient({
+	datasources: {
+		db: {
+			url:
+				process.env.DATABASE_URL_TEST ??
+				"postgresql://t3user:t3pass@localhost:5432/tennis_mate_2_test",
+		},
+	},
+});
 
 /**
  * E2Eテスト用データベースセットアップスクリプト
@@ -78,11 +89,45 @@ async function setupE2EDatabase() {
 			console.log(`  ✓ ${userData.role}: ${userData.email}`);
 		}
 
+		console.log("\n✓ テストユーザーの作成が完了しました\n");
+
+		// 3. テスト施設とコートの作成
+		console.log("🏢 テスト施設とコートを作成中...");
+
+		const facility = await db.facility.create({
+			data: {
+				id: "test-facility-001",
+				name: "テストテニスクラブ",
+				updatedAt: new Date(),
+			},
+		});
+		console.log(`  ✓ 施設: ${facility.name}`);
+
+		const court1 = await db.court.create({
+			data: {
+				id: "court1",
+				facilityId: facility.id,
+				name: "コート1",
+			},
+		});
+		console.log(`  ✓ ${court1.name}`);
+
+		const court2 = await db.court.create({
+			data: {
+				id: "court2",
+				facilityId: facility.id,
+				name: "コート2",
+			},
+		});
+		console.log(`  ✓ ${court2.name}`);
+
 		console.log("\n✅ E2Eテスト用データベースのセットアップが完了しました");
 		console.log("\n=== テストユーザー ===");
 		console.log("メールアドレス: admin@example.com");
 		console.log("パスワード: password123");
-
+		console.log("\n=== テスト施設 ===");
+		console.log(`施設名: ${facility.name}`);
+		console.log(`コート: ${court1.name}, ${court2.name}`);
 	} catch (error) {
 		console.error("\n❌ セットアップ中にエラーが発生しました:", error);
 		throw error;

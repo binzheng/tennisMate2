@@ -48,13 +48,13 @@ model Session {
 
 model User {
   id                                       String              @id @default(cuid())
-  userId                                   String?             @unique
   name                                     String?
   email                                    String?             @unique
   emailVerified                            DateTime?
   image                                    String?
-  role                                     Role                @default(player)
   passwordHash                             String?
+  role                                     Role                @default(player)
+  userId                                   String?             @unique
   accounts                                 Account[]
   LessonReservation                        LessonReservation[]
   LessonSlot                               LessonSlot[]
@@ -135,14 +135,17 @@ model LessonSlot {
   courtId           String
   coachId           String?
   capacity          Int                 @default(1)
-  start             DateTime
-  end               DateTime
+  dayOfWeek         String
+  startTime         String
+  endTime           String
+  duration          String
   createdAt         DateTime            @default(now())
   LessonReservation LessonReservation[]
   User              User?               @relation(fields: [coachId], references: [id])
   Court             Court               @relation(fields: [courtId], references: [id], onDelete: Cascade)
 
-  @@index([courtId, start, end])
+  @@unique([courtId, dayOfWeek, startTime])
+  @@index([courtId, dayOfWeek, startTime])
 }
 
 model MatchProposal {

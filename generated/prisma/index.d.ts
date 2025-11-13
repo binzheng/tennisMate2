@@ -5798,70 +5798,70 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    userId: string | null
     name: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
-    role: $Enums.Role | null
     passwordHash: string | null
+    role: $Enums.Role | null
+    userId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    userId: string | null
     name: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
-    role: $Enums.Role | null
     passwordHash: string | null
+    role: $Enums.Role | null
+    userId: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    userId: number
     name: number
     email: number
     emailVerified: number
     image: number
-    role: number
     passwordHash: number
+    role: number
+    userId: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
     id?: true
-    userId?: true
     name?: true
     email?: true
     emailVerified?: true
     image?: true
-    role?: true
     passwordHash?: true
+    role?: true
+    userId?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    userId?: true
     name?: true
     email?: true
     emailVerified?: true
     image?: true
-    role?: true
     passwordHash?: true
+    role?: true
+    userId?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    userId?: true
     name?: true
     email?: true
     emailVerified?: true
     image?: true
-    role?: true
     passwordHash?: true
+    role?: true
+    userId?: true
     _all?: true
   }
 
@@ -5939,13 +5939,13 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    userId: string | null
     name: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
-    role: $Enums.Role
     passwordHash: string | null
+    role: $Enums.Role
+    userId: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -5967,13 +5967,13 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     name?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    role?: boolean
     passwordHash?: boolean
+    role?: boolean
+    userId?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     LessonReservation?: boolean | User$LessonReservationArgs<ExtArgs>
     LessonSlot?: boolean | User$LessonSlotArgs<ExtArgs>
@@ -5989,38 +5989,38 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     name?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    role?: boolean
     passwordHash?: boolean
+    role?: boolean
+    userId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     name?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    role?: boolean
     passwordHash?: boolean
+    role?: boolean
+    userId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    userId?: boolean
     name?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    role?: boolean
     passwordHash?: boolean
+    role?: boolean
+    userId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "email" | "emailVerified" | "image" | "role" | "passwordHash", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "passwordHash" | "role" | "userId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     LessonReservation?: boolean | User$LessonReservationArgs<ExtArgs>
@@ -6053,13 +6053,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string | null
       name: string | null
       email: string | null
       emailVerified: Date | null
       image: string | null
-      role: $Enums.Role
       passwordHash: string | null
+      role: $Enums.Role
+      userId: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -6494,13 +6494,13 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly userId: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'Role'>
     readonly passwordHash: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'Role'>
+    readonly userId: FieldRef<"User", 'String'>
   }
     
 
@@ -13484,8 +13484,10 @@ export namespace Prisma {
     courtId: string | null
     coachId: string | null
     capacity: number | null
-    start: Date | null
-    end: Date | null
+    dayOfWeek: string | null
+    startTime: string | null
+    endTime: string | null
+    duration: string | null
     createdAt: Date | null
   }
 
@@ -13494,8 +13496,10 @@ export namespace Prisma {
     courtId: string | null
     coachId: string | null
     capacity: number | null
-    start: Date | null
-    end: Date | null
+    dayOfWeek: string | null
+    startTime: string | null
+    endTime: string | null
+    duration: string | null
     createdAt: Date | null
   }
 
@@ -13504,8 +13508,10 @@ export namespace Prisma {
     courtId: number
     coachId: number
     capacity: number
-    start: number
-    end: number
+    dayOfWeek: number
+    startTime: number
+    endTime: number
+    duration: number
     createdAt: number
     _all: number
   }
@@ -13524,8 +13530,10 @@ export namespace Prisma {
     courtId?: true
     coachId?: true
     capacity?: true
-    start?: true
-    end?: true
+    dayOfWeek?: true
+    startTime?: true
+    endTime?: true
+    duration?: true
     createdAt?: true
   }
 
@@ -13534,8 +13542,10 @@ export namespace Prisma {
     courtId?: true
     coachId?: true
     capacity?: true
-    start?: true
-    end?: true
+    dayOfWeek?: true
+    startTime?: true
+    endTime?: true
+    duration?: true
     createdAt?: true
   }
 
@@ -13544,8 +13554,10 @@ export namespace Prisma {
     courtId?: true
     coachId?: true
     capacity?: true
-    start?: true
-    end?: true
+    dayOfWeek?: true
+    startTime?: true
+    endTime?: true
+    duration?: true
     createdAt?: true
     _all?: true
   }
@@ -13641,8 +13653,10 @@ export namespace Prisma {
     courtId: string
     coachId: string | null
     capacity: number
-    start: Date
-    end: Date
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt: Date
     _count: LessonSlotCountAggregateOutputType | null
     _avg: LessonSlotAvgAggregateOutputType | null
@@ -13670,8 +13684,10 @@ export namespace Prisma {
     courtId?: boolean
     coachId?: boolean
     capacity?: boolean
-    start?: boolean
-    end?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    duration?: boolean
     createdAt?: boolean
     LessonReservation?: boolean | LessonSlot$LessonReservationArgs<ExtArgs>
     User?: boolean | LessonSlot$UserArgs<ExtArgs>
@@ -13684,8 +13700,10 @@ export namespace Prisma {
     courtId?: boolean
     coachId?: boolean
     capacity?: boolean
-    start?: boolean
-    end?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    duration?: boolean
     createdAt?: boolean
     User?: boolean | LessonSlot$UserArgs<ExtArgs>
     Court?: boolean | CourtDefaultArgs<ExtArgs>
@@ -13696,8 +13714,10 @@ export namespace Prisma {
     courtId?: boolean
     coachId?: boolean
     capacity?: boolean
-    start?: boolean
-    end?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    duration?: boolean
     createdAt?: boolean
     User?: boolean | LessonSlot$UserArgs<ExtArgs>
     Court?: boolean | CourtDefaultArgs<ExtArgs>
@@ -13708,12 +13728,14 @@ export namespace Prisma {
     courtId?: boolean
     coachId?: boolean
     capacity?: boolean
-    start?: boolean
-    end?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    duration?: boolean
     createdAt?: boolean
   }
 
-  export type LessonSlotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "courtId" | "coachId" | "capacity" | "start" | "end" | "createdAt", ExtArgs["result"]["lessonSlot"]>
+  export type LessonSlotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "courtId" | "coachId" | "capacity" | "dayOfWeek" | "startTime" | "endTime" | "duration" | "createdAt", ExtArgs["result"]["lessonSlot"]>
   export type LessonSlotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     LessonReservation?: boolean | LessonSlot$LessonReservationArgs<ExtArgs>
     User?: boolean | LessonSlot$UserArgs<ExtArgs>
@@ -13741,8 +13763,10 @@ export namespace Prisma {
       courtId: string
       coachId: string | null
       capacity: number
-      start: Date
-      end: Date
+      dayOfWeek: string
+      startTime: string
+      endTime: string
+      duration: string
       createdAt: Date
     }, ExtArgs["result"]["lessonSlot"]>
     composites: {}
@@ -14174,8 +14198,10 @@ export namespace Prisma {
     readonly courtId: FieldRef<"LessonSlot", 'String'>
     readonly coachId: FieldRef<"LessonSlot", 'String'>
     readonly capacity: FieldRef<"LessonSlot", 'Int'>
-    readonly start: FieldRef<"LessonSlot", 'DateTime'>
-    readonly end: FieldRef<"LessonSlot", 'DateTime'>
+    readonly dayOfWeek: FieldRef<"LessonSlot", 'String'>
+    readonly startTime: FieldRef<"LessonSlot", 'String'>
+    readonly endTime: FieldRef<"LessonSlot", 'String'>
+    readonly duration: FieldRef<"LessonSlot", 'String'>
     readonly createdAt: FieldRef<"LessonSlot", 'DateTime'>
   }
     
@@ -20131,13 +20157,13 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
     name: 'name',
     email: 'email',
     emailVerified: 'emailVerified',
     image: 'image',
+    passwordHash: 'passwordHash',
     role: 'role',
-    passwordHash: 'passwordHash'
+    userId: 'userId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -20214,8 +20240,10 @@ export namespace Prisma {
     courtId: 'courtId',
     coachId: 'coachId',
     capacity: 'capacity',
-    start: 'start',
-    end: 'end',
+    dayOfWeek: 'dayOfWeek',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    duration: 'duration',
     createdAt: 'createdAt'
   };
 
@@ -20637,13 +20665,13 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    userId?: StringNullableFilter<"User"> | string | null
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
-    role?: EnumRoleFilter<"User"> | $Enums.Role
     passwordHash?: StringNullableFilter<"User"> | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
+    userId?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     LessonReservation?: LessonReservationListRelationFilter
     LessonSlot?: LessonSlotListRelationFilter
@@ -20658,13 +20686,13 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
-    role?: SortOrder
     passwordHash?: SortOrderInput | SortOrder
+    role?: SortOrder
+    userId?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     LessonReservation?: LessonReservationOrderByRelationAggregateInput
     LessonSlot?: LessonSlotOrderByRelationAggregateInput
@@ -20679,16 +20707,16 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId?: string
     email?: string
+    userId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
-    role?: EnumRoleFilter<"User"> | $Enums.Role
     passwordHash?: StringNullableFilter<"User"> | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     accounts?: AccountListRelationFilter
     LessonReservation?: LessonReservationListRelationFilter
     LessonSlot?: LessonSlotListRelationFilter
@@ -20699,17 +20727,17 @@ export namespace Prisma {
     ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordListRelationFilter
     ScoreRecord_ScoreRecord_playerIdToUser?: ScoreRecordListRelationFilter
     sessions?: SessionListRelationFilter
-  }, "id" | "userId" | "email">
+  }, "id" | "email" | "userId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
-    role?: SortOrder
     passwordHash?: SortOrderInput | SortOrder
+    role?: SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -20720,13 +20748,13 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    userId?: StringNullableWithAggregatesFilter<"User"> | string | null
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     passwordHash?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+    userId?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type VerificationTokenWhereInput = {
@@ -21072,8 +21100,10 @@ export namespace Prisma {
     courtId?: StringFilter<"LessonSlot"> | string
     coachId?: StringNullableFilter<"LessonSlot"> | string | null
     capacity?: IntFilter<"LessonSlot"> | number
-    start?: DateTimeFilter<"LessonSlot"> | Date | string
-    end?: DateTimeFilter<"LessonSlot"> | Date | string
+    dayOfWeek?: StringFilter<"LessonSlot"> | string
+    startTime?: StringFilter<"LessonSlot"> | string
+    endTime?: StringFilter<"LessonSlot"> | string
+    duration?: StringFilter<"LessonSlot"> | string
     createdAt?: DateTimeFilter<"LessonSlot"> | Date | string
     LessonReservation?: LessonReservationListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -21085,8 +21115,10 @@ export namespace Prisma {
     courtId?: SortOrder
     coachId?: SortOrderInput | SortOrder
     capacity?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    duration?: SortOrder
     createdAt?: SortOrder
     LessonReservation?: LessonReservationOrderByRelationAggregateInput
     User?: UserOrderByWithRelationInput
@@ -21095,27 +21127,32 @@ export namespace Prisma {
 
   export type LessonSlotWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    courtId_dayOfWeek_startTime?: LessonSlotCourtIdDayOfWeekStartTimeCompoundUniqueInput
     AND?: LessonSlotWhereInput | LessonSlotWhereInput[]
     OR?: LessonSlotWhereInput[]
     NOT?: LessonSlotWhereInput | LessonSlotWhereInput[]
     courtId?: StringFilter<"LessonSlot"> | string
     coachId?: StringNullableFilter<"LessonSlot"> | string | null
     capacity?: IntFilter<"LessonSlot"> | number
-    start?: DateTimeFilter<"LessonSlot"> | Date | string
-    end?: DateTimeFilter<"LessonSlot"> | Date | string
+    dayOfWeek?: StringFilter<"LessonSlot"> | string
+    startTime?: StringFilter<"LessonSlot"> | string
+    endTime?: StringFilter<"LessonSlot"> | string
+    duration?: StringFilter<"LessonSlot"> | string
     createdAt?: DateTimeFilter<"LessonSlot"> | Date | string
     LessonReservation?: LessonReservationListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     Court?: XOR<CourtScalarRelationFilter, CourtWhereInput>
-  }, "id">
+  }, "id" | "courtId_dayOfWeek_startTime">
 
   export type LessonSlotOrderByWithAggregationInput = {
     id?: SortOrder
     courtId?: SortOrder
     coachId?: SortOrderInput | SortOrder
     capacity?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    duration?: SortOrder
     createdAt?: SortOrder
     _count?: LessonSlotCountOrderByAggregateInput
     _avg?: LessonSlotAvgOrderByAggregateInput
@@ -21132,8 +21169,10 @@ export namespace Prisma {
     courtId?: StringWithAggregatesFilter<"LessonSlot"> | string
     coachId?: StringNullableWithAggregatesFilter<"LessonSlot"> | string | null
     capacity?: IntWithAggregatesFilter<"LessonSlot"> | number
-    start?: DateTimeWithAggregatesFilter<"LessonSlot"> | Date | string
-    end?: DateTimeWithAggregatesFilter<"LessonSlot"> | Date | string
+    dayOfWeek?: StringWithAggregatesFilter<"LessonSlot"> | string
+    startTime?: StringWithAggregatesFilter<"LessonSlot"> | string
+    endTime?: StringWithAggregatesFilter<"LessonSlot"> | string
+    duration?: StringWithAggregatesFilter<"LessonSlot"> | string
     createdAt?: DateTimeWithAggregatesFilter<"LessonSlot"> | Date | string
   }
 
@@ -21682,13 +21721,13 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -21703,13 +21742,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -21724,13 +21763,13 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -21745,13 +21784,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -21766,35 +21805,35 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VerificationTokenCreateInput = {
@@ -22145,8 +22184,10 @@ export namespace Prisma {
   export type LessonSlotCreateInput = {
     id: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationCreateNestedManyWithoutLessonSlotInput
     User?: UserCreateNestedOneWithoutLessonSlotInput
@@ -22158,8 +22199,10 @@ export namespace Prisma {
     courtId: string
     coachId?: string | null
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutLessonSlotInput
   }
@@ -22167,8 +22210,10 @@ export namespace Prisma {
   export type LessonSlotUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUpdateManyWithoutLessonSlotNestedInput
     User?: UserUpdateOneWithoutLessonSlotNestedInput
@@ -22180,8 +22225,10 @@ export namespace Prisma {
     courtId?: StringFieldUpdateOperationsInput | string
     coachId?: NullableStringFieldUpdateOperationsInput | string | null
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutLessonSlotNestedInput
   }
@@ -22191,16 +22238,20 @@ export namespace Prisma {
     courtId: string
     coachId?: string | null
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
   }
 
   export type LessonSlotUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -22209,8 +22260,10 @@ export namespace Prisma {
     courtId?: StringFieldUpdateOperationsInput | string
     coachId?: NullableStringFieldUpdateOperationsInput | string | null
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -22934,35 +22987,35 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    role?: SortOrder
     passwordHash?: SortOrder
+    role?: SortOrder
+    userId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    role?: SortOrder
     passwordHash?: SortOrder
+    role?: SortOrder
+    userId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    role?: SortOrder
     passwordHash?: SortOrder
+    role?: SortOrder
+    userId?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -23203,13 +23256,21 @@ export namespace Prisma {
     isNot?: CourtWhereInput
   }
 
+  export type LessonSlotCourtIdDayOfWeekStartTimeCompoundUniqueInput = {
+    courtId: string
+    dayOfWeek: string
+    startTime: string
+  }
+
   export type LessonSlotCountOrderByAggregateInput = {
     id?: SortOrder
     courtId?: SortOrder
     coachId?: SortOrder
     capacity?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    duration?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -23222,8 +23283,10 @@ export namespace Prisma {
     courtId?: SortOrder
     coachId?: SortOrder
     capacity?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    duration?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -23232,8 +23295,10 @@ export namespace Prisma {
     courtId?: SortOrder
     coachId?: SortOrder
     capacity?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    duration?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -24515,13 +24580,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutPostsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -24535,13 +24600,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutPostsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -24571,13 +24636,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -24591,13 +24656,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -24611,13 +24676,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutAccountsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
@@ -24631,13 +24696,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
@@ -24667,13 +24732,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
@@ -24687,13 +24752,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
@@ -24707,13 +24772,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutSessionsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -24727,13 +24792,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -24763,13 +24828,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -24783,13 +24848,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -24868,8 +24933,10 @@ export namespace Prisma {
   export type LessonSlotCreateWithoutUserInput = {
     id: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationCreateNestedManyWithoutLessonSlotInput
     Court: CourtCreateNestedOneWithoutLessonSlotInput
@@ -24879,8 +24946,10 @@ export namespace Prisma {
     id: string
     courtId: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutLessonSlotInput
   }
@@ -25157,8 +25226,10 @@ export namespace Prisma {
     courtId?: StringFilter<"LessonSlot"> | string
     coachId?: StringNullableFilter<"LessonSlot"> | string | null
     capacity?: IntFilter<"LessonSlot"> | number
-    start?: DateTimeFilter<"LessonSlot"> | Date | string
-    end?: DateTimeFilter<"LessonSlot"> | Date | string
+    dayOfWeek?: StringFilter<"LessonSlot"> | string
+    startTime?: StringFilter<"LessonSlot"> | string
+    endTime?: StringFilter<"LessonSlot"> | string
+    duration?: StringFilter<"LessonSlot"> | string
     createdAt?: DateTimeFilter<"LessonSlot"> | Date | string
   }
 
@@ -25367,8 +25438,10 @@ export namespace Prisma {
   export type LessonSlotCreateWithoutCourtInput = {
     id: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationCreateNestedManyWithoutLessonSlotInput
     User?: UserCreateNestedOneWithoutLessonSlotInput
@@ -25378,8 +25451,10 @@ export namespace Prisma {
     id: string
     coachId?: string | null
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutLessonSlotInput
   }
@@ -25529,8 +25604,10 @@ export namespace Prisma {
   export type LessonSlotCreateWithoutLessonReservationInput = {
     id: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
     User?: UserCreateNestedOneWithoutLessonSlotInput
     Court: CourtCreateNestedOneWithoutLessonSlotInput
@@ -25541,8 +25618,10 @@ export namespace Prisma {
     courtId: string
     coachId?: string | null
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
   }
 
@@ -25553,13 +25632,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutLessonReservationInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
@@ -25573,13 +25652,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutLessonReservationInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
@@ -25610,8 +25689,10 @@ export namespace Prisma {
   export type LessonSlotUpdateWithoutLessonReservationInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneWithoutLessonSlotNestedInput
     Court?: CourtUpdateOneRequiredWithoutLessonSlotNestedInput
@@ -25622,8 +25703,10 @@ export namespace Prisma {
     courtId?: StringFieldUpdateOperationsInput | string
     coachId?: NullableStringFieldUpdateOperationsInput | string | null
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -25640,13 +25723,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutLessonReservationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
@@ -25660,13 +25743,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutLessonReservationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
@@ -25704,13 +25787,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutLessonSlotInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
@@ -25724,13 +25807,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutLessonSlotInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
@@ -25795,13 +25878,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutLessonSlotInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
@@ -25815,13 +25898,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutLessonSlotInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
@@ -25860,13 +25943,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutMatchRequestInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -25880,13 +25963,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutMatchRequestInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -25916,13 +25999,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutMatchRequestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -25936,13 +26019,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutMatchRequestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -25956,13 +26039,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutPlayerProfileInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -25976,13 +26059,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutPlayerProfileInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -26012,13 +26095,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPlayerProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -26032,13 +26115,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutPlayerProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -26071,13 +26154,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutReservationInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -26091,13 +26174,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutReservationInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -26152,13 +26235,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutReservationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -26172,13 +26255,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutReservationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -26192,13 +26275,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutScoreRecord_ScoreRecord_opponentIdToUserInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -26212,13 +26295,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutScoreRecord_ScoreRecord_opponentIdToUserInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -26237,13 +26320,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutScoreRecord_ScoreRecord_playerIdToUserInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
@@ -26257,13 +26340,13 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutScoreRecord_ScoreRecord_playerIdToUserInput = {
     id?: string
-    userId?: string | null
     name?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
-    role?: $Enums.Role
     passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
@@ -26293,13 +26376,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutScoreRecord_ScoreRecord_opponentIdToUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -26313,13 +26396,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutScoreRecord_ScoreRecord_opponentIdToUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -26344,13 +26427,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutScoreRecord_ScoreRecord_playerIdToUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
@@ -26364,13 +26447,13 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutScoreRecord_ScoreRecord_playerIdToUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
@@ -26408,8 +26491,10 @@ export namespace Prisma {
     id: string
     courtId: string
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
   }
 
@@ -26530,8 +26615,10 @@ export namespace Prisma {
   export type LessonSlotUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUpdateManyWithoutLessonSlotNestedInput
     Court?: CourtUpdateOneRequiredWithoutLessonSlotNestedInput
@@ -26541,8 +26628,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     courtId?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutLessonSlotNestedInput
   }
@@ -26551,8 +26640,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     courtId?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -26703,8 +26794,10 @@ export namespace Prisma {
     id: string
     coachId?: string | null
     capacity?: number
-    start: Date | string
-    end: Date | string
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+    duration: string
     createdAt?: Date | string
   }
 
@@ -26719,8 +26812,10 @@ export namespace Prisma {
   export type LessonSlotUpdateWithoutCourtInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUpdateManyWithoutLessonSlotNestedInput
     User?: UserUpdateOneWithoutLessonSlotNestedInput
@@ -26730,8 +26825,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     coachId?: NullableStringFieldUpdateOperationsInput | string | null
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutLessonSlotNestedInput
   }
@@ -26740,8 +26837,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     coachId?: NullableStringFieldUpdateOperationsInput | string | null
     capacity?: IntFieldUpdateOperationsInput | number
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
+    dayOfWeek?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

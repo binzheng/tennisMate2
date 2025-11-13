@@ -1,11 +1,16 @@
-import "@testing-library/jest-dom";
+// Conditionally load jest-dom only when a DOM is available (jsdom environment)
+if (typeof window !== "undefined" && typeof document !== "undefined") {
+  await import("@testing-library/jest-dom");
+}
 import { beforeAll, afterEach, afterAll } from "vitest";
-import { cleanup } from "@testing-library/react";
 
-// React Testing Libraryのクリーンアップ
-afterEach(() => {
-	cleanup();
-});
+// React Testing Libraryのクリーンアップ (DOM環境でのみ実行)
+if (typeof window !== "undefined" && typeof document !== "undefined") {
+  const { cleanup } = await import("@testing-library/react");
+  afterEach(() => {
+    cleanup();
+  });
+}
 
 // 環境変数のモック
 beforeAll(() => {

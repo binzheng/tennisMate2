@@ -133,6 +133,42 @@ scripts/setup-e2e-db.ts
    - すべてパスワード: password123
 ```
 
+### E2Eのタイムアウト・思考時間（スローモ）
+
+以下の環境変数でE2Eテストの時間設定を調整できます（デフォルト値はプロジェクト側で設定済）：
+
+- E2E_TEST_TIMEOUT_MS: 各テストの最大実行時間（既定: 60000）
+- E2E_EXPECT_TIMEOUT_MS: `expect(...)` の待機時間（既定: 7000）
+- E2E_ACTION_TIMEOUT_MS: クリック/入力などアクションの待機時間（既定: 10000）
+- E2E_NAVIGATION_TIMEOUT_MS: ページ遷移の待機時間（既定: 20000）
+- E2E_SLOWMO_MS: ブラウザ起動時のスローモ（ms、既定: 0）
+- E2E_THINK_MS: アクション間の思考時間（ms、既定: 0）
+
+例：
+
+```bash
+E2E_TEST_TIMEOUT_MS=90000 E2E_EXPECT_TIMEOUT_MS=12000 E2E_SLOWMO_MS=100 \
+  npm run test:e2e
+```
+
+手動で思考時間を入れたいときは、サポートヘルパーを利用します：
+
+```ts
+// tests/e2e/... 内のテストで
+import { test, expect } from "@playwright/test";
+import { think } from "./support/think";
+
+test("ユーザーフロー", async ({ page }) => {
+  await page.goto("/login");
+  await think(page); // E2E_THINK_MS が設定されていれば待機
+  await page.getByLabel("メールアドレス").fill("admin@example.com");
+  await think(page, 200); // 明示的に200ms待機
+  await page.getByLabel("パスワード").fill("password123");
+  await page.getByRole("button", { name: "ログイン" }).click();
+  await expect(page).toHaveURL(/\/users/);
+});
+```
+
 ### すべてのテストを実行
 
 ```bash

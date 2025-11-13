@@ -154,13 +154,13 @@ exports.Prisma.SessionScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
+  passwordHash: 'passwordHash',
   role: 'role',
-  passwordHash: 'passwordHash'
+  userId: 'userId'
 };
 
 exports.Prisma.VerificationTokenScalarFieldEnum = {
@@ -216,8 +216,10 @@ exports.Prisma.LessonSlotScalarFieldEnum = {
   courtId: 'courtId',
   coachId: 'coachId',
   capacity: 'capacity',
-  start: 'start',
-  end: 'end',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  duration: 'duration',
   createdAt: 'createdAt'
 };
 

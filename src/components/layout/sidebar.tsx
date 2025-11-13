@@ -44,7 +44,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 		},
 	];
 
-	const masterItems = [{ title: "ユーザー", path: "/users" }];
+	const masterItems = [
+		{ title: "ユーザー", path: "/users" },
+		{ title: "レッスン", path: "/lessons" },
+	];
 
 	return (
 		<Drawer
