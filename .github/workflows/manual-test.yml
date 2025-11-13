@@ -1,14 +1,10 @@
-name: CI
+name: Manual Test Run
 
 on:
-  push:
-    branches: [master, deploy, main]
-  pull_request:
-    branches: [master, deploy, main]
   workflow_dispatch:
     inputs:
       test_type:
-        description: "Test type to run"
+        description: 'Test type to run'
         required: true
         type: choice
         options:
@@ -16,19 +12,18 @@ on:
           - unit
           - integration
           - e2e
-          - lint
-        default: "all"
+          - lint-only
+        default: 'all'
       node_version:
-        description: "Node.js version"
+        description: 'Node.js version'
         required: false
         type: string
-        default: "20"
+        default: '20'
 
 jobs:
   lint-and-typecheck:
     name: Lint and Type Check
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'lint'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ inputs.node_version }}
           cache: "npm"
 
       - name: Install dependencies
@@ -49,17 +44,13 @@ jobs:
         run: npm run typecheck
 
       - name: Run build check
-        env:
-          DATABASE_URL: postgresql://t3user:t3pass@localhost:5432/tennis_mate_2
-          AUTH_SECRET: PV1GGbyj717C+fTfx8IRpz/eK9kHXKJ3Brdy0knGEU8=
-          AUTH_DISCORD_ID: aN3B1mXhY2FzQzVtRm5sV1pXcEZiZz09
-          AUTH_DISCORD_SECRET: aDg2MTc4Njc4NmJlNDY4ZWI2YjhiOTU3YmE2ZDYzYjY0YS04Y2I0LTRlOTctOWE2Zi1iZjhiMjA0ZGI2YzI=
         run: npm run build
 
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'unit' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
+    if: inputs.test_type == 'all' || inputs.test_type == 'unit'
+    needs: lint-and-typecheck
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -67,7 +58,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ inputs.node_version }}
           cache: "npm"
 
       - name: Install dependencies
@@ -79,8 +70,8 @@ jobs:
   integration-tests:
     name: Integration Tests
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'integration' || inputs.test_type == 'e2e'
-    needs: unit-tests
+    if: inputs.test_type == 'all' || inputs.test_type == 'integration'
+    needs: lint-and-typecheck
     services:
       postgres:
         image: postgres:16
@@ -103,7 +94,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ inputs.node_version }}
           cache: "npm"
 
       - name: Install dependencies
@@ -122,8 +113,8 @@ jobs:
   e2e-tests:
     name: E2E Tests
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || inputs.test_type == 'all' || inputs.test_type == 'e2e'
-    needs: [unit-tests, integration-tests]
+    if: inputs.test_type == 'all' || inputs.test_type == 'e2e'
+    needs: lint-and-typecheck
     services:
       postgres:
         image: postgres:16
@@ -146,7 +137,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ inputs.node_version }}
           cache: "npm"
 
       - name: Install dependencies
