@@ -16,23 +16,26 @@ export function getTestDb(): PrismaClient {
 export async function cleanupDatabase() {
 	const db = getTestDb();
 
-	// 外部キー制約があるため、順序に注意して削除
-	await db.lessonReservation.deleteMany({});
-	await db.lessonSlot.deleteMany({});
-	await db.lessonPolicy.deleteMany({});
-	await db.reservation.deleteMany({});
-	await db.court.deleteMany({});
-	await db.facility.deleteMany({});
-	await db.scoreRecord.deleteMany({});
-	await db.matchRequest.deleteMany({});
-	await db.matchProposal.deleteMany({});
-	await db.playerProfile.deleteMany({});
-	await db.post.deleteMany({});
-	await db.session.deleteMany({});
-	await db.account.deleteMany({});
-	await db.user.deleteMany({});
-	await db.verificationToken.deleteMany({});
-	await db.importJob.deleteMany({});
+	// トランザクションを使って確実に削除
+	await db.$transaction(async (tx) => {
+		// 外部キー制約があるため、順序に注意して削除
+		await tx.lessonReservation.deleteMany({});
+		await tx.lessonSlot.deleteMany({});
+		await tx.lessonPolicy.deleteMany({});
+		await tx.reservation.deleteMany({});
+		await tx.court.deleteMany({});
+		await tx.facility.deleteMany({});
+		await tx.scoreRecord.deleteMany({});
+		await tx.matchRequest.deleteMany({});
+		await tx.matchProposal.deleteMany({});
+		await tx.playerProfile.deleteMany({});
+		await tx.post.deleteMany({});
+		await tx.session.deleteMany({});
+		await tx.account.deleteMany({});
+		await tx.user.deleteMany({});
+		await tx.verificationToken.deleteMany({});
+		await tx.importJob.deleteMany({});
+	});
 }
 
 export async function disconnectDb() {

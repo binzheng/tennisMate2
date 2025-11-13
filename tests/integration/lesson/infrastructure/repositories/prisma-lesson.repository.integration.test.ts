@@ -11,11 +11,18 @@ const db = getTestDb();
 
 async function seedFacilityAndCourt() {
   const facilityId = "fac-1";
+  const courtId = "court-1";
+
+  // 既存のコートとファシリティを確認して、なければ作成
   const existingFacility = await db.facility.findUnique({ where: { id: facilityId } });
   if (!existingFacility) {
     await db.facility.create({ data: { id: facilityId, name: "施設A", updatedAt: new Date() } });
   }
-  await db.court.create({ data: { id: "court-1", name: "Aコート", facilityId } });
+
+  const existingCourt = await db.court.findUnique({ where: { id: courtId } });
+  if (!existingCourt) {
+    await db.court.create({ data: { id: courtId, name: "Aコート", facilityId } });
+  }
 }
 
 function calcEndTime(startTime: string, duration: string): string {
@@ -80,11 +87,17 @@ describe("PrismaLessonRepository Integration Test", () => {
         endTime: calcEndTime("09:00", "90"),
         duration: "90",
       });
-      await repository.create(s1);
+      const created = await repository.create(s1);
+      expect(created.id).toBe("slot_1");
 
       const list1 = await repository.findAll();
       expect(list1.length).toBe(1);
       expect(list1[0]?.courtId).toBe("court-1");
+
+      // データが存在することを確認
+      const beforeUpdate = await repository.findById("slot_1");
+      expect(beforeUpdate).not.toBeNull();
+      expect(beforeUpdate?.startTime).toBe("09:00");
 
       // update startTime -> endTime も更新済で渡す
       const updatedEntity = Lesson.create({
