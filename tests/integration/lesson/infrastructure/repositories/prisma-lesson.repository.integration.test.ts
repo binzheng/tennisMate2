@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, afterAll } from "vitest";
 import { PrismaLessonRepository } from "~/modules/lesson/infrastructure/repositories/prisma-lesson.repository";
 import { Lesson } from "~/modules/lesson/domain/entities/lesson.entity";
 import {

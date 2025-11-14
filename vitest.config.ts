@@ -12,6 +12,7 @@ export default defineConfig({
 		exclude: ["node_modules", "e2e", "**/e2e/**"],
 		// 統合テストではデータベースを共有するため、並行実行を無効化
 		pool: "forks",
+		// @ts-expect-error - poolOptions.forks.singleFork is valid but not in the type definition
 		poolOptions: {
 			forks: {
 				singleFork: true,

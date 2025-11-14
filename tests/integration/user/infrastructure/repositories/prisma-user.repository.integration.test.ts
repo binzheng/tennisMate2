@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, afterAll } from "vitest";
 import { PrismaUserRepository } from "~/modules/user/infrastructure/repositories/prisma-user.repository";
 import { User } from "~/modules/user/domain/entities/user.entity";
 import { Password } from "~/modules/user/domain/value-objects/password.vo";
