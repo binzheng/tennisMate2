@@ -19,8 +19,8 @@ describe("GetUsersUseCase", () => {
 
     const out = await useCase.execute();
     expect(out).toHaveLength(2);
-    expect(out[0].id).toBe(u1.id);
-    expect(out[1].id).toBe(u2.id);
+    expect(out[0]?.id).toBe(u1.id);
+    expect(out[1]?.id).toBe(u2.id);
     expect(out[0]).not.toHaveProperty("passwordHash");
   });
 });

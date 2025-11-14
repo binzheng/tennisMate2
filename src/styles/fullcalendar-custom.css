@@ -49,6 +49,6 @@
 }
 
 /* 今日の日付のハイライト */
-.fc .fc-day-today {
-	background-color: rgba(25, 118, 210, 0.1) !important;
+.fc .fc-day-today.fc-day {
+	background-color: rgba(25, 118, 210, 0.1);
 }

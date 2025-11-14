@@ -17,8 +17,11 @@ describe("PrismaUserRepository Integration Test", () => {
 		repository = new PrismaUserRepository(db);
 	});
 
-	afterAll(async () => {
+	afterEach(async () => {
 		await cleanupDatabase();
+	});
+
+	afterAll(async () => {
 		await disconnectDb();
 	});
 
