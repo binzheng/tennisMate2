@@ -4,10 +4,15 @@ let prisma: PrismaClient;
 
 export function getTestDb(): PrismaClient {
 	if (!prisma) {
+		const url =
+			process.env.DATABASE_URL_TEST ||
+			"postgresql://postgres:password@localhost:5432/tennis_mate_2_test";
 		prisma = new PrismaClient({
-			datasourceUrl:
-				process.env.DATABASE_URL_TEST ||
-				"postgresql://postgres:password@localhost:5432/tennis_mate_2_test",
+			datasources: {
+				db: {
+					url,
+				},
+			},
 		});
 	}
 	return prisma;
@@ -17,6 +22,7 @@ export async function cleanupDatabase() {
 	const db = getTestDb();
 
 	// 外部キー制約があるため、順序に注意して削除
+	// 各削除操作を確実に完了させるため、順次実行
 	await db.lessonReservation.deleteMany({});
 	await db.lessonSlot.deleteMany({});
 	await db.lessonPolicy.deleteMany({});
