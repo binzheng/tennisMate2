@@ -163,7 +163,7 @@ jobs:
           AUTH_DISCORD_SECRET: aDg2MTc4Njc4NmJlNDY4ZWI2YjhiOTU3YmE2ZDYzYjY0YS04Y2I0LTRlOTctOWE2Zi1iZjhiMjA0ZGI2YzI=
         run: |
           npx prisma db push --accept-data-loss
-          npm run db:seed
+          npm run db:setup-e2e
 
       - name: Run E2E tests
         env:
