@@ -167,7 +167,7 @@ jobs:
 
       - name: Run E2E tests
         env:
-          DATABASE_URL: postgresql://t3user:t3pass@localhost:5432/tennis_mate_2
+          DATABASE_URL: postgresql://t3user:t3pass@localhost:5432/tennis_mate_2_test
           AUTH_SECRET: PV1GGbyj717C+fTfx8IRpz/eK9kHXKJ3Brdy0knGEU8=
           AUTH_DISCORD_ID: aN3B1mXhY2FzQzVtRm5sV1pXcEZiZz09
           AUTH_DISCORD_SECRET: aDg2MTc4Njc4NmJlNDY4ZWI2YjhiOTU3YmE2ZDYzYjY0YS04Y2I0LTRlOTctOWE2Zi1iZjhiMjA0ZGI2YzI=
