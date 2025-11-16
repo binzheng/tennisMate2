@@ -28,6 +28,12 @@ async function setupE2EDatabase() {
 		console.log("📦 データベースをクリーンアップ中...");
 
 		// 外部キー制約があるため、順序に注意して削除
+
+		// Match関連のテーブルを先に削除（外部キー制約を考慮）
+		await db.matchGamePlayer.deleteMany({});
+		await db.matchGame.deleteMany({});
+		await db.matchSession.deleteMany({});
+
 		await db.lessonReservation.deleteMany({});
 		await db.lessonSlot.deleteMany({});
 		await db.lessonPolicy.deleteMany({});

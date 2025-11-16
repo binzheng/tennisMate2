@@ -23,6 +23,12 @@ export async function cleanupDatabase() {
 
 	// 外部キー制約があるため、順序に注意して削除
 	// 各削除操作を確実に完了させるため、順次実行
+
+	// Match関連のテーブルを先に削除（外部キー制約を考慮）
+	await db.matchGamePlayer.deleteMany({});
+	await db.matchGame.deleteMany({});
+	await db.matchSession.deleteMany({});
+
 	await db.lessonReservation.deleteMany({});
 	await db.lessonSlot.deleteMany({});
 	await db.lessonPolicy.deleteMany({});

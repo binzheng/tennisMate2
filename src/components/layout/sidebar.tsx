@@ -47,6 +47,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 	const masterItems = [
 		{ title: "ユーザー", path: "/users" },
 		{ title: "レッスン", path: "/lessons" },
+		{ title: "ゲームマッチング", path: "/match" },
 	];
 
 	return (

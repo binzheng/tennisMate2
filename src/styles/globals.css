@@ -5,3 +5,67 @@
 		var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Print styles for A4 single-page summary */
+@media print {
+	@page {
+		size: A4 portrait;
+		margin: 12mm;
+	}
+
+	/* Only print the selected area */
+	body * {
+		visibility: hidden;
+	}
+	#print-area,
+	#print-area * {
+		visibility: visible;
+	}
+	#print-area {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	/* Compact typography */
+	#print-area {
+		font-size: 11px;
+		line-height: 1.3;
+	}
+	#print-area h1,
+	#print-area h2,
+	#print-area h3,
+	#print-area h4,
+	#print-area h5,
+	#print-area h6 {
+		margin: 0 0 6px 0;
+	}
+
+	/* Tables compact */
+	#print-area table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	#print-area th,
+	#print-area td {
+		padding: 4px 6px;
+		border: 1px solid #999;
+	}
+	#print-area thead {
+		background: #eee;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+	#print-area tr {
+		page-break-inside: avoid;
+	}
+
+	/* Hide buttons/controls inside print area */
+	#print-area .no-print {
+		display: none;
+	}
+	#print-area .print-hide {
+		display: none;
+	}
+}

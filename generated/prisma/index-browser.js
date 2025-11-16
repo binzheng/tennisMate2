@@ -273,6 +273,37 @@ exports.Prisma.ScoreRecordScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.MatchSessionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  date: 'date',
+  playerCount: 'playerCount',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MatchGameScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  gameNumber: 'gameNumber',
+  status: 'status',
+  winner: 'winner',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MatchGamePlayerScalarFieldEnum = {
+  id: 'id',
+  gameId: 'gameId',
+  userId: 'userId',
+  playerName: 'playerName',
+  team: 'team',
+  position: 'position',
+  score: 'score',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -321,7 +352,10 @@ exports.Prisma.ModelName = {
   MatchRequest: 'MatchRequest',
   PlayerProfile: 'PlayerProfile',
   Reservation: 'Reservation',
-  ScoreRecord: 'ScoreRecord'
+  ScoreRecord: 'ScoreRecord',
+  MatchSession: 'MatchSession',
+  MatchGame: 'MatchGame',
+  MatchGamePlayer: 'MatchGamePlayer'
 };
 
 /**

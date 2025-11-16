@@ -44,6 +44,10 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 	const utils = api.useUtils();
 	const isEditing = userId !== null;
 
+	const userFormResolver = isEditing
+		? zodResolver(userFormUpdateSchema)
+		: zodResolver(userFormSchema);
+
 	const {
 		control,
 		handleSubmit,
@@ -51,9 +55,7 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		formState: { errors },
 	} = useForm<UserFormData>({
 		// 編集時と新規作成時で異なるスキーマを使用
-		resolver: zodResolver(
-			isEditing ? userFormUpdateSchema : userFormSchema,
-		) as any,
+		resolver: userFormResolver,
 		mode: "onChange",
 		defaultValues: {
 			userId: "",

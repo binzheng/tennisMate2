@@ -73,15 +73,17 @@ export function LessonDialog({ open, lessonId, onClose }: LessonDialogProps) {
 	const utils = api.useUtils();
 	const isEditing = lessonId !== null;
 
+	const formResolver = isEditing
+		? zodResolver(lessonFormUpdateSchema)
+		: zodResolver(lessonFormSchema);
+
 	const {
 		control,
 		handleSubmit,
 		reset,
 		formState: { errors },
 	} = useForm<LessonFormData>({
-		resolver: zodResolver(
-			isEditing ? lessonFormUpdateSchema : lessonFormSchema,
-		) as any,
+		resolver: formResolver,
 		mode: "onChange",
 		defaultValues: {
 			courtId: "court1",
