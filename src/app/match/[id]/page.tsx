@@ -83,7 +83,7 @@ export default function MatchSessionPage({ params }: PageProps) {
 			const { data } = await generateSessionPDFQuery.refetch();
 
 			if (data) {
-				const { pdf, filename } = data;
+				const { pdf } = data;
 
 				// Convert base64 to blob
 				const byteCharacters = atob(pdf);
@@ -94,19 +94,18 @@ export default function MatchSessionPage({ params }: PageProps) {
 				const byteArray = new Uint8Array(byteNumbers);
 				const blob = new Blob([byteArray], { type: "application/pdf" });
 
-				// Create download link
+				// Open PDF in new tab
 				const url = window.URL.createObjectURL(blob);
-				const link = document.createElement("a");
-				link.href = url;
-				link.download = filename;
-				document.body.appendChild(link);
-				link.click();
-				document.body.removeChild(link);
-				window.URL.revokeObjectURL(url);
+				window.open(url, "_blank");
+
+				// Clean up the URL after a short delay to allow the browser to open it
+				setTimeout(() => {
+					window.URL.revokeObjectURL(url);
+				}, 100);
 			}
 		} catch (err) {
-			console.error("PDF download failed:", err);
-			alert("PDFのダウンロードに失敗しました");
+			console.error("PDF generation failed:", err);
+			alert("PDFの生成に失敗しました");
 		} finally {
 			setIsGeneratingPDF(false);
 		}

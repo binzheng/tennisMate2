@@ -18,13 +18,19 @@ import {
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
-	type CreateUserInput,
 	userFormSchema,
+	userFormUpdateSchema,
 } from "~/lib/validations/user.schema";
 import { api } from "~/trpc/react";
 
-// Form data type - スキーマから型を推論
-type UserFormData = CreateUserInput;
+// Form data type - 作成と編集で異なる型を統合
+type UserFormData = {
+	userId: string;
+	name: string;
+	email: string;
+	password: string;
+	role: "player" | "coach" | "operator" | "admin";
+};
 
 interface UserDialogProps {
 	open: boolean;
@@ -44,7 +50,9 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		reset,
 		formState: { errors },
 	} = useForm<UserFormData>({
-		resolver: zodResolver(userFormSchema),
+		resolver: zodResolver(
+			isEditing ? userFormUpdateSchema : userFormSchema,
+		) as any,
 		mode: "onChange",
 		defaultValues: {
 			userId: "",
