@@ -21,27 +21,13 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
+	type CreateLessonInput,
 	lessonFormSchema,
-	lessonFormUpdateSchema,
 } from "~/lib/validations/lesson.schema";
 import { api } from "~/trpc/react";
 
-// Form data type
-type LessonFormData = {
-	courtId: string;
-	coachId: string | null;
-	capacity: number;
-	dayOfWeek:
-		| "monday"
-		| "tuesday"
-		| "wednesday"
-		| "thursday"
-		| "friday"
-		| "saturday"
-		| "sunday";
-	startTime: string;
-	duration: "60" | "90" | "120";
-};
+// Form data type - スキーマから型を推論
+type LessonFormData = CreateLessonInput;
 
 interface LessonDialogProps {
 	open: boolean;
@@ -73,17 +59,13 @@ export function LessonDialog({ open, lessonId, onClose }: LessonDialogProps) {
 	const utils = api.useUtils();
 	const isEditing = lessonId !== null;
 
-	const formResolver = isEditing
-		? zodResolver(lessonFormUpdateSchema)
-		: zodResolver(lessonFormSchema);
-
 	const {
 		control,
 		handleSubmit,
 		reset,
 		formState: { errors },
 	} = useForm<LessonFormData>({
-		resolver: formResolver,
+		resolver: zodResolver(lessonFormSchema),
 		mode: "onChange",
 		defaultValues: {
 			courtId: "court1",
