@@ -58,6 +58,7 @@ model User {
   accounts                                 Account[]
   LessonReservation                        LessonReservation[]
   LessonSlot                               LessonSlot[]
+  MatchGamePlayer                          MatchGamePlayer[]
   MatchRequest                             MatchRequest[]
   PlayerProfile                            PlayerProfile?
   posts                                    Post[]
@@ -211,6 +212,50 @@ model ScoreRecord {
   User_ScoreRecord_playerIdToUser   User     @relation("ScoreRecord_playerIdToUser", fields: [playerId], references: [id], onDelete: Cascade)
 
   @@index([playerId, date])
+}
+
+model MatchSession {
+  id          String      @id
+  name        String
+  date        DateTime
+  playerCount Int
+  createdBy   String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  MatchGame   MatchGame[]
+
+  @@index([date])
+  @@index([createdBy])
+}
+
+model MatchGame {
+  id              String            @id
+  sessionId       String
+  gameNumber      Int
+  status          String            @default("scheduled")
+  winner          Int?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  MatchSession    MatchSession      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  MatchGamePlayer MatchGamePlayer[]
+
+  @@index([sessionId, gameNumber])
+}
+
+model MatchGamePlayer {
+  id        String    @id
+  gameId    String
+  userId    String?
+  playerName String
+  team      Int
+  position  Int
+  score     Int?
+  createdAt DateTime  @default(now())
+  MatchGame MatchGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  User      User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@unique([gameId, position])
+  @@index([gameId])
 }
 
 enum Role {

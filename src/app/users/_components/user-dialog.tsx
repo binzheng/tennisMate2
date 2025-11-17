@@ -23,7 +23,7 @@ import {
 } from "~/lib/validations/user.schema";
 import { api } from "~/trpc/react";
 
-// Form data type - 新規作成と編集で共通の型
+// Form data type - 作成と編集で異なる型を統合
 type UserFormData = {
 	userId: string;
 	name: string;
@@ -50,7 +50,6 @@ export function UserDialog({ open, userId, onClose }: UserDialogProps) {
 		reset,
 		formState: { errors },
 	} = useForm<UserFormData>({
-		// 編集時と新規作成時で異なるスキーマを使用
 		resolver: zodResolver(
 			isEditing ? userFormUpdateSchema : userFormSchema,
 		) as any,

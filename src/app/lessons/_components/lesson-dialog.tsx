@@ -26,7 +26,7 @@ import {
 } from "~/lib/validations/lesson.schema";
 import { api } from "~/trpc/react";
 
-// Form data type
+// Form data type - 作成と編集で異なる型を統合
 type LessonFormData = {
 	courtId: string;
 	coachId: string | null;

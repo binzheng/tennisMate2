@@ -93,6 +93,21 @@ export type Reservation = $Result.DefaultSelection<Prisma.$ReservationPayload>
  * 
  */
 export type ScoreRecord = $Result.DefaultSelection<Prisma.$ScoreRecordPayload>
+/**
+ * Model MatchSession
+ * 
+ */
+export type MatchSession = $Result.DefaultSelection<Prisma.$MatchSessionPayload>
+/**
+ * Model MatchGame
+ * 
+ */
+export type MatchGame = $Result.DefaultSelection<Prisma.$MatchGamePayload>
+/**
+ * Model MatchGamePlayer
+ * 
+ */
+export type MatchGamePlayer = $Result.DefaultSelection<Prisma.$MatchGamePlayerPayload>
 
 /**
  * Enums
@@ -390,6 +405,36 @@ export class PrismaClient<
     * ```
     */
   get scoreRecord(): Prisma.ScoreRecordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.matchSession`: Exposes CRUD operations for the **MatchSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MatchSessions
+    * const matchSessions = await prisma.matchSession.findMany()
+    * ```
+    */
+  get matchSession(): Prisma.MatchSessionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.matchGame`: Exposes CRUD operations for the **MatchGame** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MatchGames
+    * const matchGames = await prisma.matchGame.findMany()
+    * ```
+    */
+  get matchGame(): Prisma.MatchGameDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.matchGamePlayer`: Exposes CRUD operations for the **MatchGamePlayer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MatchGamePlayers
+    * const matchGamePlayers = await prisma.matchGamePlayer.findMany()
+    * ```
+    */
+  get matchGamePlayer(): Prisma.MatchGamePlayerDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -846,7 +891,10 @@ export namespace Prisma {
     MatchRequest: 'MatchRequest',
     PlayerProfile: 'PlayerProfile',
     Reservation: 'Reservation',
-    ScoreRecord: 'ScoreRecord'
+    ScoreRecord: 'ScoreRecord',
+    MatchSession: 'MatchSession',
+    MatchGame: 'MatchGame',
+    MatchGamePlayer: 'MatchGamePlayer'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -865,7 +913,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "post" | "account" | "session" | "user" | "verificationToken" | "court" | "facility" | "importJob" | "lessonPolicy" | "lessonReservation" | "lessonSlot" | "matchProposal" | "matchRequest" | "playerProfile" | "reservation" | "scoreRecord"
+      modelProps: "post" | "account" | "session" | "user" | "verificationToken" | "court" | "facility" | "importJob" | "lessonPolicy" | "lessonReservation" | "lessonSlot" | "matchProposal" | "matchRequest" | "playerProfile" | "reservation" | "scoreRecord" | "matchSession" | "matchGame" | "matchGamePlayer"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2053,6 +2101,228 @@ export namespace Prisma {
           }
         }
       }
+      MatchSession: {
+        payload: Prisma.$MatchSessionPayload<ExtArgs>
+        fields: Prisma.MatchSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MatchSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MatchSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.MatchSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MatchSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          findMany: {
+            args: Prisma.MatchSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>[]
+          }
+          create: {
+            args: Prisma.MatchSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          createMany: {
+            args: Prisma.MatchSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MatchSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.MatchSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          update: {
+            args: Prisma.MatchSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.MatchSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MatchSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MatchSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>[]
+          }
+          upsert: {
+            args: Prisma.MatchSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.MatchSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMatchSession>
+          }
+          groupBy: {
+            args: Prisma.MatchSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MatchSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MatchSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<MatchSessionCountAggregateOutputType> | number
+          }
+        }
+      }
+      MatchGame: {
+        payload: Prisma.$MatchGamePayload<ExtArgs>
+        fields: Prisma.MatchGameFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MatchGameFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MatchGameFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          findFirst: {
+            args: Prisma.MatchGameFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MatchGameFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          findMany: {
+            args: Prisma.MatchGameFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>[]
+          }
+          create: {
+            args: Prisma.MatchGameCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          createMany: {
+            args: Prisma.MatchGameCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MatchGameCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>[]
+          }
+          delete: {
+            args: Prisma.MatchGameDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          update: {
+            args: Prisma.MatchGameUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          deleteMany: {
+            args: Prisma.MatchGameDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MatchGameUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MatchGameUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>[]
+          }
+          upsert: {
+            args: Prisma.MatchGameUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePayload>
+          }
+          aggregate: {
+            args: Prisma.MatchGameAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMatchGame>
+          }
+          groupBy: {
+            args: Prisma.MatchGameGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MatchGameGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MatchGameCountArgs<ExtArgs>
+            result: $Utils.Optional<MatchGameCountAggregateOutputType> | number
+          }
+        }
+      }
+      MatchGamePlayer: {
+        payload: Prisma.$MatchGamePlayerPayload<ExtArgs>
+        fields: Prisma.MatchGamePlayerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MatchGamePlayerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MatchGamePlayerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          findFirst: {
+            args: Prisma.MatchGamePlayerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MatchGamePlayerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          findMany: {
+            args: Prisma.MatchGamePlayerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>[]
+          }
+          create: {
+            args: Prisma.MatchGamePlayerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          createMany: {
+            args: Prisma.MatchGamePlayerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MatchGamePlayerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>[]
+          }
+          delete: {
+            args: Prisma.MatchGamePlayerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          update: {
+            args: Prisma.MatchGamePlayerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          deleteMany: {
+            args: Prisma.MatchGamePlayerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MatchGamePlayerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MatchGamePlayerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>[]
+          }
+          upsert: {
+            args: Prisma.MatchGamePlayerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchGamePlayerPayload>
+          }
+          aggregate: {
+            args: Prisma.MatchGamePlayerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMatchGamePlayer>
+          }
+          groupBy: {
+            args: Prisma.MatchGamePlayerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MatchGamePlayerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MatchGamePlayerCountArgs<ExtArgs>
+            result: $Utils.Optional<MatchGamePlayerCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2165,6 +2435,9 @@ export namespace Prisma {
     playerProfile?: PlayerProfileOmit
     reservation?: ReservationOmit
     scoreRecord?: ScoreRecordOmit
+    matchSession?: MatchSessionOmit
+    matchGame?: MatchGameOmit
+    matchGamePlayer?: MatchGamePlayerOmit
   }
 
   /* Types for Logging */
@@ -2248,6 +2521,7 @@ export namespace Prisma {
     accounts: number
     LessonReservation: number
     LessonSlot: number
+    MatchGamePlayer: number
     MatchRequest: number
     posts: number
     Reservation: number
@@ -2260,6 +2534,7 @@ export namespace Prisma {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     LessonReservation?: boolean | UserCountOutputTypeCountLessonReservationArgs
     LessonSlot?: boolean | UserCountOutputTypeCountLessonSlotArgs
+    MatchGamePlayer?: boolean | UserCountOutputTypeCountMatchGamePlayerArgs
     MatchRequest?: boolean | UserCountOutputTypeCountMatchRequestArgs
     posts?: boolean | UserCountOutputTypeCountPostsArgs
     Reservation?: boolean | UserCountOutputTypeCountReservationArgs
@@ -2298,6 +2573,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountLessonSlotArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LessonSlotWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMatchGamePlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchGamePlayerWhereInput
   }
 
   /**
@@ -2442,6 +2724,68 @@ export namespace Prisma {
    */
   export type LessonSlotCountOutputTypeCountLessonReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LessonReservationWhereInput
+  }
+
+
+  /**
+   * Count Type MatchSessionCountOutputType
+   */
+
+  export type MatchSessionCountOutputType = {
+    MatchGame: number
+  }
+
+  export type MatchSessionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGame?: boolean | MatchSessionCountOutputTypeCountMatchGameArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MatchSessionCountOutputType without action
+   */
+  export type MatchSessionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSessionCountOutputType
+     */
+    select?: MatchSessionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MatchSessionCountOutputType without action
+   */
+  export type MatchSessionCountOutputTypeCountMatchGameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchGameWhereInput
+  }
+
+
+  /**
+   * Count Type MatchGameCountOutputType
+   */
+
+  export type MatchGameCountOutputType = {
+    MatchGamePlayer: number
+  }
+
+  export type MatchGameCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGamePlayer?: boolean | MatchGameCountOutputTypeCountMatchGamePlayerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MatchGameCountOutputType without action
+   */
+  export type MatchGameCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGameCountOutputType
+     */
+    select?: MatchGameCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MatchGameCountOutputType without action
+   */
+  export type MatchGameCountOutputTypeCountMatchGamePlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchGamePlayerWhereInput
   }
 
 
@@ -5977,6 +6321,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     LessonReservation?: boolean | User$LessonReservationArgs<ExtArgs>
     LessonSlot?: boolean | User$LessonSlotArgs<ExtArgs>
+    MatchGamePlayer?: boolean | User$MatchGamePlayerArgs<ExtArgs>
     MatchRequest?: boolean | User$MatchRequestArgs<ExtArgs>
     PlayerProfile?: boolean | User$PlayerProfileArgs<ExtArgs>
     posts?: boolean | User$postsArgs<ExtArgs>
@@ -6025,6 +6370,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     LessonReservation?: boolean | User$LessonReservationArgs<ExtArgs>
     LessonSlot?: boolean | User$LessonSlotArgs<ExtArgs>
+    MatchGamePlayer?: boolean | User$MatchGamePlayerArgs<ExtArgs>
     MatchRequest?: boolean | User$MatchRequestArgs<ExtArgs>
     PlayerProfile?: boolean | User$PlayerProfileArgs<ExtArgs>
     posts?: boolean | User$postsArgs<ExtArgs>
@@ -6043,6 +6389,7 @@ export namespace Prisma {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       LessonReservation: Prisma.$LessonReservationPayload<ExtArgs>[]
       LessonSlot: Prisma.$LessonSlotPayload<ExtArgs>[]
+      MatchGamePlayer: Prisma.$MatchGamePlayerPayload<ExtArgs>[]
       MatchRequest: Prisma.$MatchRequestPayload<ExtArgs>[]
       PlayerProfile: Prisma.$PlayerProfilePayload<ExtArgs> | null
       posts: Prisma.$PostPayload<ExtArgs>[]
@@ -6457,6 +6804,7 @@ export namespace Prisma {
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     LessonReservation<T extends User$LessonReservationArgs<ExtArgs> = {}>(args?: Subset<T, User$LessonReservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     LessonSlot<T extends User$LessonSlotArgs<ExtArgs> = {}>(args?: Subset<T, User$LessonSlotArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonSlotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    MatchGamePlayer<T extends User$MatchGamePlayerArgs<ExtArgs> = {}>(args?: Subset<T, User$MatchGamePlayerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     MatchRequest<T extends User$MatchRequestArgs<ExtArgs> = {}>(args?: Subset<T, User$MatchRequestArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     PlayerProfile<T extends User$PlayerProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$PlayerProfileArgs<ExtArgs>>): Prisma__PlayerProfileClient<$Result.GetResult<Prisma.$PlayerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -6958,6 +7306,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: LessonSlotScalarFieldEnum | LessonSlotScalarFieldEnum[]
+  }
+
+  /**
+   * User.MatchGamePlayer
+   */
+  export type User$MatchGamePlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    where?: MatchGamePlayerWhereInput
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    cursor?: MatchGamePlayerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MatchGamePlayerScalarFieldEnum | MatchGamePlayerScalarFieldEnum[]
   }
 
   /**
@@ -20102,6 +20474,3454 @@ export namespace Prisma {
 
 
   /**
+   * Model MatchSession
+   */
+
+  export type AggregateMatchSession = {
+    _count: MatchSessionCountAggregateOutputType | null
+    _avg: MatchSessionAvgAggregateOutputType | null
+    _sum: MatchSessionSumAggregateOutputType | null
+    _min: MatchSessionMinAggregateOutputType | null
+    _max: MatchSessionMaxAggregateOutputType | null
+  }
+
+  export type MatchSessionAvgAggregateOutputType = {
+    playerCount: number | null
+  }
+
+  export type MatchSessionSumAggregateOutputType = {
+    playerCount: number | null
+  }
+
+  export type MatchSessionMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date: Date | null
+    playerCount: number | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MatchSessionMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date: Date | null
+    playerCount: number | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MatchSessionCountAggregateOutputType = {
+    id: number
+    name: number
+    date: number
+    playerCount: number
+    createdBy: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MatchSessionAvgAggregateInputType = {
+    playerCount?: true
+  }
+
+  export type MatchSessionSumAggregateInputType = {
+    playerCount?: true
+  }
+
+  export type MatchSessionMinAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    playerCount?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MatchSessionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    playerCount?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MatchSessionCountAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    playerCount?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MatchSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchSession to aggregate.
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchSessions to fetch.
+     */
+    orderBy?: MatchSessionOrderByWithRelationInput | MatchSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MatchSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MatchSessions
+    **/
+    _count?: true | MatchSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MatchSessionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MatchSessionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MatchSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MatchSessionMaxAggregateInputType
+  }
+
+  export type GetMatchSessionAggregateType<T extends MatchSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateMatchSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMatchSession[P]>
+      : GetScalarType<T[P], AggregateMatchSession[P]>
+  }
+
+
+
+
+  export type MatchSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchSessionWhereInput
+    orderBy?: MatchSessionOrderByWithAggregationInput | MatchSessionOrderByWithAggregationInput[]
+    by: MatchSessionScalarFieldEnum[] | MatchSessionScalarFieldEnum
+    having?: MatchSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MatchSessionCountAggregateInputType | true
+    _avg?: MatchSessionAvgAggregateInputType
+    _sum?: MatchSessionSumAggregateInputType
+    _min?: MatchSessionMinAggregateInputType
+    _max?: MatchSessionMaxAggregateInputType
+  }
+
+  export type MatchSessionGroupByOutputType = {
+    id: string
+    name: string
+    date: Date
+    playerCount: number
+    createdBy: string
+    createdAt: Date
+    updatedAt: Date
+    _count: MatchSessionCountAggregateOutputType | null
+    _avg: MatchSessionAvgAggregateOutputType | null
+    _sum: MatchSessionSumAggregateOutputType | null
+    _min: MatchSessionMinAggregateOutputType | null
+    _max: MatchSessionMaxAggregateOutputType | null
+  }
+
+  type GetMatchSessionGroupByPayload<T extends MatchSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MatchSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MatchSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MatchSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], MatchSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MatchSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    playerCount?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    MatchGame?: boolean | MatchSession$MatchGameArgs<ExtArgs>
+    _count?: boolean | MatchSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchSession"]>
+
+  export type MatchSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    playerCount?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["matchSession"]>
+
+  export type MatchSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    playerCount?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["matchSession"]>
+
+  export type MatchSessionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    playerCount?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MatchSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "playerCount" | "createdBy" | "createdAt" | "updatedAt", ExtArgs["result"]["matchSession"]>
+  export type MatchSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGame?: boolean | MatchSession$MatchGameArgs<ExtArgs>
+    _count?: boolean | MatchSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MatchSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MatchSessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $MatchSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MatchSession"
+    objects: {
+      MatchGame: Prisma.$MatchGamePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      date: Date
+      playerCount: number
+      createdBy: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["matchSession"]>
+    composites: {}
+  }
+
+  type MatchSessionGetPayload<S extends boolean | null | undefined | MatchSessionDefaultArgs> = $Result.GetResult<Prisma.$MatchSessionPayload, S>
+
+  type MatchSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MatchSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MatchSessionCountAggregateInputType | true
+    }
+
+  export interface MatchSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MatchSession'], meta: { name: 'MatchSession' } }
+    /**
+     * Find zero or one MatchSession that matches the filter.
+     * @param {MatchSessionFindUniqueArgs} args - Arguments to find a MatchSession
+     * @example
+     * // Get one MatchSession
+     * const matchSession = await prisma.matchSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MatchSessionFindUniqueArgs>(args: SelectSubset<T, MatchSessionFindUniqueArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MatchSession that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MatchSessionFindUniqueOrThrowArgs} args - Arguments to find a MatchSession
+     * @example
+     * // Get one MatchSession
+     * const matchSession = await prisma.matchSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MatchSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, MatchSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionFindFirstArgs} args - Arguments to find a MatchSession
+     * @example
+     * // Get one MatchSession
+     * const matchSession = await prisma.matchSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MatchSessionFindFirstArgs>(args?: SelectSubset<T, MatchSessionFindFirstArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionFindFirstOrThrowArgs} args - Arguments to find a MatchSession
+     * @example
+     * // Get one MatchSession
+     * const matchSession = await prisma.matchSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MatchSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, MatchSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MatchSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MatchSessions
+     * const matchSessions = await prisma.matchSession.findMany()
+     * 
+     * // Get first 10 MatchSessions
+     * const matchSessions = await prisma.matchSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const matchSessionWithIdOnly = await prisma.matchSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MatchSessionFindManyArgs>(args?: SelectSubset<T, MatchSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MatchSession.
+     * @param {MatchSessionCreateArgs} args - Arguments to create a MatchSession.
+     * @example
+     * // Create one MatchSession
+     * const MatchSession = await prisma.matchSession.create({
+     *   data: {
+     *     // ... data to create a MatchSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends MatchSessionCreateArgs>(args: SelectSubset<T, MatchSessionCreateArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MatchSessions.
+     * @param {MatchSessionCreateManyArgs} args - Arguments to create many MatchSessions.
+     * @example
+     * // Create many MatchSessions
+     * const matchSession = await prisma.matchSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MatchSessionCreateManyArgs>(args?: SelectSubset<T, MatchSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MatchSessions and returns the data saved in the database.
+     * @param {MatchSessionCreateManyAndReturnArgs} args - Arguments to create many MatchSessions.
+     * @example
+     * // Create many MatchSessions
+     * const matchSession = await prisma.matchSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MatchSessions and only return the `id`
+     * const matchSessionWithIdOnly = await prisma.matchSession.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MatchSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, MatchSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MatchSession.
+     * @param {MatchSessionDeleteArgs} args - Arguments to delete one MatchSession.
+     * @example
+     * // Delete one MatchSession
+     * const MatchSession = await prisma.matchSession.delete({
+     *   where: {
+     *     // ... filter to delete one MatchSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MatchSessionDeleteArgs>(args: SelectSubset<T, MatchSessionDeleteArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MatchSession.
+     * @param {MatchSessionUpdateArgs} args - Arguments to update one MatchSession.
+     * @example
+     * // Update one MatchSession
+     * const matchSession = await prisma.matchSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MatchSessionUpdateArgs>(args: SelectSubset<T, MatchSessionUpdateArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MatchSessions.
+     * @param {MatchSessionDeleteManyArgs} args - Arguments to filter MatchSessions to delete.
+     * @example
+     * // Delete a few MatchSessions
+     * const { count } = await prisma.matchSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MatchSessionDeleteManyArgs>(args?: SelectSubset<T, MatchSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MatchSessions
+     * const matchSession = await prisma.matchSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MatchSessionUpdateManyArgs>(args: SelectSubset<T, MatchSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchSessions and returns the data updated in the database.
+     * @param {MatchSessionUpdateManyAndReturnArgs} args - Arguments to update many MatchSessions.
+     * @example
+     * // Update many MatchSessions
+     * const matchSession = await prisma.matchSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MatchSessions and only return the `id`
+     * const matchSessionWithIdOnly = await prisma.matchSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MatchSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, MatchSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MatchSession.
+     * @param {MatchSessionUpsertArgs} args - Arguments to update or create a MatchSession.
+     * @example
+     * // Update or create a MatchSession
+     * const matchSession = await prisma.matchSession.upsert({
+     *   create: {
+     *     // ... data to create a MatchSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MatchSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MatchSessionUpsertArgs>(args: SelectSubset<T, MatchSessionUpsertArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MatchSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionCountArgs} args - Arguments to filter MatchSessions to count.
+     * @example
+     * // Count the number of MatchSessions
+     * const count = await prisma.matchSession.count({
+     *   where: {
+     *     // ... the filter for the MatchSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends MatchSessionCountArgs>(
+      args?: Subset<T, MatchSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MatchSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MatchSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MatchSessionAggregateArgs>(args: Subset<T, MatchSessionAggregateArgs>): Prisma.PrismaPromise<GetMatchSessionAggregateType<T>>
+
+    /**
+     * Group by MatchSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MatchSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MatchSessionGroupByArgs['orderBy'] }
+        : { orderBy?: MatchSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MatchSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMatchSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MatchSession model
+   */
+  readonly fields: MatchSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MatchSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MatchSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    MatchGame<T extends MatchSession$MatchGameArgs<ExtArgs> = {}>(args?: Subset<T, MatchSession$MatchGameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MatchSession model
+   */
+  interface MatchSessionFieldRefs {
+    readonly id: FieldRef<"MatchSession", 'String'>
+    readonly name: FieldRef<"MatchSession", 'String'>
+    readonly date: FieldRef<"MatchSession", 'DateTime'>
+    readonly playerCount: FieldRef<"MatchSession", 'Int'>
+    readonly createdBy: FieldRef<"MatchSession", 'String'>
+    readonly createdAt: FieldRef<"MatchSession", 'DateTime'>
+    readonly updatedAt: FieldRef<"MatchSession", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MatchSession findUnique
+   */
+  export type MatchSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchSession to fetch.
+     */
+    where: MatchSessionWhereUniqueInput
+  }
+
+  /**
+   * MatchSession findUniqueOrThrow
+   */
+  export type MatchSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchSession to fetch.
+     */
+    where: MatchSessionWhereUniqueInput
+  }
+
+  /**
+   * MatchSession findFirst
+   */
+  export type MatchSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchSession to fetch.
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchSessions to fetch.
+     */
+    orderBy?: MatchSessionOrderByWithRelationInput | MatchSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchSessions.
+     */
+    cursor?: MatchSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchSessions.
+     */
+    distinct?: MatchSessionScalarFieldEnum | MatchSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MatchSession findFirstOrThrow
+   */
+  export type MatchSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchSession to fetch.
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchSessions to fetch.
+     */
+    orderBy?: MatchSessionOrderByWithRelationInput | MatchSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchSessions.
+     */
+    cursor?: MatchSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchSessions.
+     */
+    distinct?: MatchSessionScalarFieldEnum | MatchSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MatchSession findMany
+   */
+  export type MatchSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchSessions to fetch.
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchSessions to fetch.
+     */
+    orderBy?: MatchSessionOrderByWithRelationInput | MatchSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MatchSessions.
+     */
+    cursor?: MatchSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchSessions.
+     */
+    skip?: number
+    distinct?: MatchSessionScalarFieldEnum | MatchSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MatchSession create
+   */
+  export type MatchSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MatchSession.
+     */
+    data: XOR<MatchSessionCreateInput, MatchSessionUncheckedCreateInput>
+  }
+
+  /**
+   * MatchSession createMany
+   */
+  export type MatchSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MatchSessions.
+     */
+    data: MatchSessionCreateManyInput | MatchSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MatchSession createManyAndReturn
+   */
+  export type MatchSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * The data used to create many MatchSessions.
+     */
+    data: MatchSessionCreateManyInput | MatchSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MatchSession update
+   */
+  export type MatchSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MatchSession.
+     */
+    data: XOR<MatchSessionUpdateInput, MatchSessionUncheckedUpdateInput>
+    /**
+     * Choose, which MatchSession to update.
+     */
+    where: MatchSessionWhereUniqueInput
+  }
+
+  /**
+   * MatchSession updateMany
+   */
+  export type MatchSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MatchSessions.
+     */
+    data: XOR<MatchSessionUpdateManyMutationInput, MatchSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchSessions to update
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * Limit how many MatchSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchSession updateManyAndReturn
+   */
+  export type MatchSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update MatchSessions.
+     */
+    data: XOR<MatchSessionUpdateManyMutationInput, MatchSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchSessions to update
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * Limit how many MatchSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchSession upsert
+   */
+  export type MatchSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MatchSession to update in case it exists.
+     */
+    where: MatchSessionWhereUniqueInput
+    /**
+     * In case the MatchSession found by the `where` argument doesn't exist, create a new MatchSession with this data.
+     */
+    create: XOR<MatchSessionCreateInput, MatchSessionUncheckedCreateInput>
+    /**
+     * In case the MatchSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MatchSessionUpdateInput, MatchSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * MatchSession delete
+   */
+  export type MatchSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+    /**
+     * Filter which MatchSession to delete.
+     */
+    where: MatchSessionWhereUniqueInput
+  }
+
+  /**
+   * MatchSession deleteMany
+   */
+  export type MatchSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchSessions to delete
+     */
+    where?: MatchSessionWhereInput
+    /**
+     * Limit how many MatchSessions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchSession.MatchGame
+   */
+  export type MatchSession$MatchGameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    where?: MatchGameWhereInput
+    orderBy?: MatchGameOrderByWithRelationInput | MatchGameOrderByWithRelationInput[]
+    cursor?: MatchGameWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MatchGameScalarFieldEnum | MatchGameScalarFieldEnum[]
+  }
+
+  /**
+   * MatchSession without action
+   */
+  export type MatchSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchSession
+     */
+    select?: MatchSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchSession
+     */
+    omit?: MatchSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchSessionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MatchGame
+   */
+
+  export type AggregateMatchGame = {
+    _count: MatchGameCountAggregateOutputType | null
+    _avg: MatchGameAvgAggregateOutputType | null
+    _sum: MatchGameSumAggregateOutputType | null
+    _min: MatchGameMinAggregateOutputType | null
+    _max: MatchGameMaxAggregateOutputType | null
+  }
+
+  export type MatchGameAvgAggregateOutputType = {
+    gameNumber: number | null
+    winner: number | null
+  }
+
+  export type MatchGameSumAggregateOutputType = {
+    gameNumber: number | null
+    winner: number | null
+  }
+
+  export type MatchGameMinAggregateOutputType = {
+    id: string | null
+    sessionId: string | null
+    gameNumber: number | null
+    status: string | null
+    winner: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MatchGameMaxAggregateOutputType = {
+    id: string | null
+    sessionId: string | null
+    gameNumber: number | null
+    status: string | null
+    winner: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MatchGameCountAggregateOutputType = {
+    id: number
+    sessionId: number
+    gameNumber: number
+    status: number
+    winner: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MatchGameAvgAggregateInputType = {
+    gameNumber?: true
+    winner?: true
+  }
+
+  export type MatchGameSumAggregateInputType = {
+    gameNumber?: true
+    winner?: true
+  }
+
+  export type MatchGameMinAggregateInputType = {
+    id?: true
+    sessionId?: true
+    gameNumber?: true
+    status?: true
+    winner?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MatchGameMaxAggregateInputType = {
+    id?: true
+    sessionId?: true
+    gameNumber?: true
+    status?: true
+    winner?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MatchGameCountAggregateInputType = {
+    id?: true
+    sessionId?: true
+    gameNumber?: true
+    status?: true
+    winner?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MatchGameAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchGame to aggregate.
+     */
+    where?: MatchGameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGames to fetch.
+     */
+    orderBy?: MatchGameOrderByWithRelationInput | MatchGameOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MatchGameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGames from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGames.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MatchGames
+    **/
+    _count?: true | MatchGameCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MatchGameAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MatchGameSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MatchGameMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MatchGameMaxAggregateInputType
+  }
+
+  export type GetMatchGameAggregateType<T extends MatchGameAggregateArgs> = {
+        [P in keyof T & keyof AggregateMatchGame]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMatchGame[P]>
+      : GetScalarType<T[P], AggregateMatchGame[P]>
+  }
+
+
+
+
+  export type MatchGameGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchGameWhereInput
+    orderBy?: MatchGameOrderByWithAggregationInput | MatchGameOrderByWithAggregationInput[]
+    by: MatchGameScalarFieldEnum[] | MatchGameScalarFieldEnum
+    having?: MatchGameScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MatchGameCountAggregateInputType | true
+    _avg?: MatchGameAvgAggregateInputType
+    _sum?: MatchGameSumAggregateInputType
+    _min?: MatchGameMinAggregateInputType
+    _max?: MatchGameMaxAggregateInputType
+  }
+
+  export type MatchGameGroupByOutputType = {
+    id: string
+    sessionId: string
+    gameNumber: number
+    status: string
+    winner: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MatchGameCountAggregateOutputType | null
+    _avg: MatchGameAvgAggregateOutputType | null
+    _sum: MatchGameSumAggregateOutputType | null
+    _min: MatchGameMinAggregateOutputType | null
+    _max: MatchGameMaxAggregateOutputType | null
+  }
+
+  type GetMatchGameGroupByPayload<T extends MatchGameGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MatchGameGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MatchGameGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MatchGameGroupByOutputType[P]>
+            : GetScalarType<T[P], MatchGameGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MatchGameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    gameNumber?: boolean
+    status?: boolean
+    winner?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+    MatchGamePlayer?: boolean | MatchGame$MatchGamePlayerArgs<ExtArgs>
+    _count?: boolean | MatchGameCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGame"]>
+
+  export type MatchGameSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    gameNumber?: boolean
+    status?: boolean
+    winner?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGame"]>
+
+  export type MatchGameSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    gameNumber?: boolean
+    status?: boolean
+    winner?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGame"]>
+
+  export type MatchGameSelectScalar = {
+    id?: boolean
+    sessionId?: boolean
+    gameNumber?: boolean
+    status?: boolean
+    winner?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MatchGameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sessionId" | "gameNumber" | "status" | "winner" | "createdAt" | "updatedAt", ExtArgs["result"]["matchGame"]>
+  export type MatchGameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+    MatchGamePlayer?: boolean | MatchGame$MatchGamePlayerArgs<ExtArgs>
+    _count?: boolean | MatchGameCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MatchGameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+  }
+  export type MatchGameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchSession?: boolean | MatchSessionDefaultArgs<ExtArgs>
+  }
+
+  export type $MatchGamePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MatchGame"
+    objects: {
+      MatchSession: Prisma.$MatchSessionPayload<ExtArgs>
+      MatchGamePlayer: Prisma.$MatchGamePlayerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sessionId: string
+      gameNumber: number
+      status: string
+      winner: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["matchGame"]>
+    composites: {}
+  }
+
+  type MatchGameGetPayload<S extends boolean | null | undefined | MatchGameDefaultArgs> = $Result.GetResult<Prisma.$MatchGamePayload, S>
+
+  type MatchGameCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MatchGameFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MatchGameCountAggregateInputType | true
+    }
+
+  export interface MatchGameDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MatchGame'], meta: { name: 'MatchGame' } }
+    /**
+     * Find zero or one MatchGame that matches the filter.
+     * @param {MatchGameFindUniqueArgs} args - Arguments to find a MatchGame
+     * @example
+     * // Get one MatchGame
+     * const matchGame = await prisma.matchGame.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MatchGameFindUniqueArgs>(args: SelectSubset<T, MatchGameFindUniqueArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MatchGame that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MatchGameFindUniqueOrThrowArgs} args - Arguments to find a MatchGame
+     * @example
+     * // Get one MatchGame
+     * const matchGame = await prisma.matchGame.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MatchGameFindUniqueOrThrowArgs>(args: SelectSubset<T, MatchGameFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchGame that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameFindFirstArgs} args - Arguments to find a MatchGame
+     * @example
+     * // Get one MatchGame
+     * const matchGame = await prisma.matchGame.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MatchGameFindFirstArgs>(args?: SelectSubset<T, MatchGameFindFirstArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchGame that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameFindFirstOrThrowArgs} args - Arguments to find a MatchGame
+     * @example
+     * // Get one MatchGame
+     * const matchGame = await prisma.matchGame.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MatchGameFindFirstOrThrowArgs>(args?: SelectSubset<T, MatchGameFindFirstOrThrowArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MatchGames that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MatchGames
+     * const matchGames = await prisma.matchGame.findMany()
+     * 
+     * // Get first 10 MatchGames
+     * const matchGames = await prisma.matchGame.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const matchGameWithIdOnly = await prisma.matchGame.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MatchGameFindManyArgs>(args?: SelectSubset<T, MatchGameFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MatchGame.
+     * @param {MatchGameCreateArgs} args - Arguments to create a MatchGame.
+     * @example
+     * // Create one MatchGame
+     * const MatchGame = await prisma.matchGame.create({
+     *   data: {
+     *     // ... data to create a MatchGame
+     *   }
+     * })
+     * 
+     */
+    create<T extends MatchGameCreateArgs>(args: SelectSubset<T, MatchGameCreateArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MatchGames.
+     * @param {MatchGameCreateManyArgs} args - Arguments to create many MatchGames.
+     * @example
+     * // Create many MatchGames
+     * const matchGame = await prisma.matchGame.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MatchGameCreateManyArgs>(args?: SelectSubset<T, MatchGameCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MatchGames and returns the data saved in the database.
+     * @param {MatchGameCreateManyAndReturnArgs} args - Arguments to create many MatchGames.
+     * @example
+     * // Create many MatchGames
+     * const matchGame = await prisma.matchGame.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MatchGames and only return the `id`
+     * const matchGameWithIdOnly = await prisma.matchGame.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MatchGameCreateManyAndReturnArgs>(args?: SelectSubset<T, MatchGameCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MatchGame.
+     * @param {MatchGameDeleteArgs} args - Arguments to delete one MatchGame.
+     * @example
+     * // Delete one MatchGame
+     * const MatchGame = await prisma.matchGame.delete({
+     *   where: {
+     *     // ... filter to delete one MatchGame
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MatchGameDeleteArgs>(args: SelectSubset<T, MatchGameDeleteArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MatchGame.
+     * @param {MatchGameUpdateArgs} args - Arguments to update one MatchGame.
+     * @example
+     * // Update one MatchGame
+     * const matchGame = await prisma.matchGame.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MatchGameUpdateArgs>(args: SelectSubset<T, MatchGameUpdateArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MatchGames.
+     * @param {MatchGameDeleteManyArgs} args - Arguments to filter MatchGames to delete.
+     * @example
+     * // Delete a few MatchGames
+     * const { count } = await prisma.matchGame.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MatchGameDeleteManyArgs>(args?: SelectSubset<T, MatchGameDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchGames.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MatchGames
+     * const matchGame = await prisma.matchGame.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MatchGameUpdateManyArgs>(args: SelectSubset<T, MatchGameUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchGames and returns the data updated in the database.
+     * @param {MatchGameUpdateManyAndReturnArgs} args - Arguments to update many MatchGames.
+     * @example
+     * // Update many MatchGames
+     * const matchGame = await prisma.matchGame.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MatchGames and only return the `id`
+     * const matchGameWithIdOnly = await prisma.matchGame.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MatchGameUpdateManyAndReturnArgs>(args: SelectSubset<T, MatchGameUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MatchGame.
+     * @param {MatchGameUpsertArgs} args - Arguments to update or create a MatchGame.
+     * @example
+     * // Update or create a MatchGame
+     * const matchGame = await prisma.matchGame.upsert({
+     *   create: {
+     *     // ... data to create a MatchGame
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MatchGame we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MatchGameUpsertArgs>(args: SelectSubset<T, MatchGameUpsertArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MatchGames.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameCountArgs} args - Arguments to filter MatchGames to count.
+     * @example
+     * // Count the number of MatchGames
+     * const count = await prisma.matchGame.count({
+     *   where: {
+     *     // ... the filter for the MatchGames we want to count
+     *   }
+     * })
+    **/
+    count<T extends MatchGameCountArgs>(
+      args?: Subset<T, MatchGameCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MatchGameCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MatchGame.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MatchGameAggregateArgs>(args: Subset<T, MatchGameAggregateArgs>): Prisma.PrismaPromise<GetMatchGameAggregateType<T>>
+
+    /**
+     * Group by MatchGame.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGameGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MatchGameGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MatchGameGroupByArgs['orderBy'] }
+        : { orderBy?: MatchGameGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MatchGameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMatchGameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MatchGame model
+   */
+  readonly fields: MatchGameFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MatchGame.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MatchGameClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    MatchSession<T extends MatchSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MatchSessionDefaultArgs<ExtArgs>>): Prisma__MatchSessionClient<$Result.GetResult<Prisma.$MatchSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    MatchGamePlayer<T extends MatchGame$MatchGamePlayerArgs<ExtArgs> = {}>(args?: Subset<T, MatchGame$MatchGamePlayerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MatchGame model
+   */
+  interface MatchGameFieldRefs {
+    readonly id: FieldRef<"MatchGame", 'String'>
+    readonly sessionId: FieldRef<"MatchGame", 'String'>
+    readonly gameNumber: FieldRef<"MatchGame", 'Int'>
+    readonly status: FieldRef<"MatchGame", 'String'>
+    readonly winner: FieldRef<"MatchGame", 'Int'>
+    readonly createdAt: FieldRef<"MatchGame", 'DateTime'>
+    readonly updatedAt: FieldRef<"MatchGame", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MatchGame findUnique
+   */
+  export type MatchGameFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGame to fetch.
+     */
+    where: MatchGameWhereUniqueInput
+  }
+
+  /**
+   * MatchGame findUniqueOrThrow
+   */
+  export type MatchGameFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGame to fetch.
+     */
+    where: MatchGameWhereUniqueInput
+  }
+
+  /**
+   * MatchGame findFirst
+   */
+  export type MatchGameFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGame to fetch.
+     */
+    where?: MatchGameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGames to fetch.
+     */
+    orderBy?: MatchGameOrderByWithRelationInput | MatchGameOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchGames.
+     */
+    cursor?: MatchGameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGames from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGames.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchGames.
+     */
+    distinct?: MatchGameScalarFieldEnum | MatchGameScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGame findFirstOrThrow
+   */
+  export type MatchGameFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGame to fetch.
+     */
+    where?: MatchGameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGames to fetch.
+     */
+    orderBy?: MatchGameOrderByWithRelationInput | MatchGameOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchGames.
+     */
+    cursor?: MatchGameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGames from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGames.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchGames.
+     */
+    distinct?: MatchGameScalarFieldEnum | MatchGameScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGame findMany
+   */
+  export type MatchGameFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGames to fetch.
+     */
+    where?: MatchGameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGames to fetch.
+     */
+    orderBy?: MatchGameOrderByWithRelationInput | MatchGameOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MatchGames.
+     */
+    cursor?: MatchGameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGames from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGames.
+     */
+    skip?: number
+    distinct?: MatchGameScalarFieldEnum | MatchGameScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGame create
+   */
+  export type MatchGameCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MatchGame.
+     */
+    data: XOR<MatchGameCreateInput, MatchGameUncheckedCreateInput>
+  }
+
+  /**
+   * MatchGame createMany
+   */
+  export type MatchGameCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MatchGames.
+     */
+    data: MatchGameCreateManyInput | MatchGameCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MatchGame createManyAndReturn
+   */
+  export type MatchGameCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * The data used to create many MatchGames.
+     */
+    data: MatchGameCreateManyInput | MatchGameCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchGame update
+   */
+  export type MatchGameUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MatchGame.
+     */
+    data: XOR<MatchGameUpdateInput, MatchGameUncheckedUpdateInput>
+    /**
+     * Choose, which MatchGame to update.
+     */
+    where: MatchGameWhereUniqueInput
+  }
+
+  /**
+   * MatchGame updateMany
+   */
+  export type MatchGameUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MatchGames.
+     */
+    data: XOR<MatchGameUpdateManyMutationInput, MatchGameUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchGames to update
+     */
+    where?: MatchGameWhereInput
+    /**
+     * Limit how many MatchGames to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchGame updateManyAndReturn
+   */
+  export type MatchGameUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * The data used to update MatchGames.
+     */
+    data: XOR<MatchGameUpdateManyMutationInput, MatchGameUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchGames to update
+     */
+    where?: MatchGameWhereInput
+    /**
+     * Limit how many MatchGames to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchGame upsert
+   */
+  export type MatchGameUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MatchGame to update in case it exists.
+     */
+    where: MatchGameWhereUniqueInput
+    /**
+     * In case the MatchGame found by the `where` argument doesn't exist, create a new MatchGame with this data.
+     */
+    create: XOR<MatchGameCreateInput, MatchGameUncheckedCreateInput>
+    /**
+     * In case the MatchGame was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MatchGameUpdateInput, MatchGameUncheckedUpdateInput>
+  }
+
+  /**
+   * MatchGame delete
+   */
+  export type MatchGameDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+    /**
+     * Filter which MatchGame to delete.
+     */
+    where: MatchGameWhereUniqueInput
+  }
+
+  /**
+   * MatchGame deleteMany
+   */
+  export type MatchGameDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchGames to delete
+     */
+    where?: MatchGameWhereInput
+    /**
+     * Limit how many MatchGames to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchGame.MatchGamePlayer
+   */
+  export type MatchGame$MatchGamePlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    where?: MatchGamePlayerWhereInput
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    cursor?: MatchGamePlayerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MatchGamePlayerScalarFieldEnum | MatchGamePlayerScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGame without action
+   */
+  export type MatchGameDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGame
+     */
+    select?: MatchGameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGame
+     */
+    omit?: MatchGameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGameInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MatchGamePlayer
+   */
+
+  export type AggregateMatchGamePlayer = {
+    _count: MatchGamePlayerCountAggregateOutputType | null
+    _avg: MatchGamePlayerAvgAggregateOutputType | null
+    _sum: MatchGamePlayerSumAggregateOutputType | null
+    _min: MatchGamePlayerMinAggregateOutputType | null
+    _max: MatchGamePlayerMaxAggregateOutputType | null
+  }
+
+  export type MatchGamePlayerAvgAggregateOutputType = {
+    team: number | null
+    position: number | null
+    score: number | null
+  }
+
+  export type MatchGamePlayerSumAggregateOutputType = {
+    team: number | null
+    position: number | null
+    score: number | null
+  }
+
+  export type MatchGamePlayerMinAggregateOutputType = {
+    id: string | null
+    gameId: string | null
+    userId: string | null
+    playerName: string | null
+    team: number | null
+    position: number | null
+    score: number | null
+    createdAt: Date | null
+  }
+
+  export type MatchGamePlayerMaxAggregateOutputType = {
+    id: string | null
+    gameId: string | null
+    userId: string | null
+    playerName: string | null
+    team: number | null
+    position: number | null
+    score: number | null
+    createdAt: Date | null
+  }
+
+  export type MatchGamePlayerCountAggregateOutputType = {
+    id: number
+    gameId: number
+    userId: number
+    playerName: number
+    team: number
+    position: number
+    score: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MatchGamePlayerAvgAggregateInputType = {
+    team?: true
+    position?: true
+    score?: true
+  }
+
+  export type MatchGamePlayerSumAggregateInputType = {
+    team?: true
+    position?: true
+    score?: true
+  }
+
+  export type MatchGamePlayerMinAggregateInputType = {
+    id?: true
+    gameId?: true
+    userId?: true
+    playerName?: true
+    team?: true
+    position?: true
+    score?: true
+    createdAt?: true
+  }
+
+  export type MatchGamePlayerMaxAggregateInputType = {
+    id?: true
+    gameId?: true
+    userId?: true
+    playerName?: true
+    team?: true
+    position?: true
+    score?: true
+    createdAt?: true
+  }
+
+  export type MatchGamePlayerCountAggregateInputType = {
+    id?: true
+    gameId?: true
+    userId?: true
+    playerName?: true
+    team?: true
+    position?: true
+    score?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MatchGamePlayerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchGamePlayer to aggregate.
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGamePlayers to fetch.
+     */
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MatchGamePlayerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGamePlayers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGamePlayers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MatchGamePlayers
+    **/
+    _count?: true | MatchGamePlayerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MatchGamePlayerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MatchGamePlayerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MatchGamePlayerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MatchGamePlayerMaxAggregateInputType
+  }
+
+  export type GetMatchGamePlayerAggregateType<T extends MatchGamePlayerAggregateArgs> = {
+        [P in keyof T & keyof AggregateMatchGamePlayer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMatchGamePlayer[P]>
+      : GetScalarType<T[P], AggregateMatchGamePlayer[P]>
+  }
+
+
+
+
+  export type MatchGamePlayerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchGamePlayerWhereInput
+    orderBy?: MatchGamePlayerOrderByWithAggregationInput | MatchGamePlayerOrderByWithAggregationInput[]
+    by: MatchGamePlayerScalarFieldEnum[] | MatchGamePlayerScalarFieldEnum
+    having?: MatchGamePlayerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MatchGamePlayerCountAggregateInputType | true
+    _avg?: MatchGamePlayerAvgAggregateInputType
+    _sum?: MatchGamePlayerSumAggregateInputType
+    _min?: MatchGamePlayerMinAggregateInputType
+    _max?: MatchGamePlayerMaxAggregateInputType
+  }
+
+  export type MatchGamePlayerGroupByOutputType = {
+    id: string
+    gameId: string
+    userId: string | null
+    playerName: string
+    team: number
+    position: number
+    score: number | null
+    createdAt: Date
+    _count: MatchGamePlayerCountAggregateOutputType | null
+    _avg: MatchGamePlayerAvgAggregateOutputType | null
+    _sum: MatchGamePlayerSumAggregateOutputType | null
+    _min: MatchGamePlayerMinAggregateOutputType | null
+    _max: MatchGamePlayerMaxAggregateOutputType | null
+  }
+
+  type GetMatchGamePlayerGroupByPayload<T extends MatchGamePlayerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MatchGamePlayerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MatchGamePlayerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MatchGamePlayerGroupByOutputType[P]>
+            : GetScalarType<T[P], MatchGamePlayerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MatchGamePlayerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    gameId?: boolean
+    userId?: boolean
+    playerName?: boolean
+    team?: boolean
+    position?: boolean
+    score?: boolean
+    createdAt?: boolean
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGamePlayer"]>
+
+  export type MatchGamePlayerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    gameId?: boolean
+    userId?: boolean
+    playerName?: boolean
+    team?: boolean
+    position?: boolean
+    score?: boolean
+    createdAt?: boolean
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGamePlayer"]>
+
+  export type MatchGamePlayerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    gameId?: boolean
+    userId?: boolean
+    playerName?: boolean
+    team?: boolean
+    position?: boolean
+    score?: boolean
+    createdAt?: boolean
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }, ExtArgs["result"]["matchGamePlayer"]>
+
+  export type MatchGamePlayerSelectScalar = {
+    id?: boolean
+    gameId?: boolean
+    userId?: boolean
+    playerName?: boolean
+    team?: boolean
+    position?: boolean
+    score?: boolean
+    createdAt?: boolean
+  }
+
+  export type MatchGamePlayerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "gameId" | "userId" | "playerName" | "team" | "position" | "score" | "createdAt", ExtArgs["result"]["matchGamePlayer"]>
+  export type MatchGamePlayerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }
+  export type MatchGamePlayerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }
+  export type MatchGamePlayerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MatchGame?: boolean | MatchGameDefaultArgs<ExtArgs>
+    User?: boolean | MatchGamePlayer$UserArgs<ExtArgs>
+  }
+
+  export type $MatchGamePlayerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MatchGamePlayer"
+    objects: {
+      MatchGame: Prisma.$MatchGamePayload<ExtArgs>
+      User: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      gameId: string
+      userId: string | null
+      playerName: string
+      team: number
+      position: number
+      score: number | null
+      createdAt: Date
+    }, ExtArgs["result"]["matchGamePlayer"]>
+    composites: {}
+  }
+
+  type MatchGamePlayerGetPayload<S extends boolean | null | undefined | MatchGamePlayerDefaultArgs> = $Result.GetResult<Prisma.$MatchGamePlayerPayload, S>
+
+  type MatchGamePlayerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MatchGamePlayerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MatchGamePlayerCountAggregateInputType | true
+    }
+
+  export interface MatchGamePlayerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MatchGamePlayer'], meta: { name: 'MatchGamePlayer' } }
+    /**
+     * Find zero or one MatchGamePlayer that matches the filter.
+     * @param {MatchGamePlayerFindUniqueArgs} args - Arguments to find a MatchGamePlayer
+     * @example
+     * // Get one MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MatchGamePlayerFindUniqueArgs>(args: SelectSubset<T, MatchGamePlayerFindUniqueArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MatchGamePlayer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MatchGamePlayerFindUniqueOrThrowArgs} args - Arguments to find a MatchGamePlayer
+     * @example
+     * // Get one MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MatchGamePlayerFindUniqueOrThrowArgs>(args: SelectSubset<T, MatchGamePlayerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchGamePlayer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerFindFirstArgs} args - Arguments to find a MatchGamePlayer
+     * @example
+     * // Get one MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MatchGamePlayerFindFirstArgs>(args?: SelectSubset<T, MatchGamePlayerFindFirstArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchGamePlayer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerFindFirstOrThrowArgs} args - Arguments to find a MatchGamePlayer
+     * @example
+     * // Get one MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MatchGamePlayerFindFirstOrThrowArgs>(args?: SelectSubset<T, MatchGamePlayerFindFirstOrThrowArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MatchGamePlayers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MatchGamePlayers
+     * const matchGamePlayers = await prisma.matchGamePlayer.findMany()
+     * 
+     * // Get first 10 MatchGamePlayers
+     * const matchGamePlayers = await prisma.matchGamePlayer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const matchGamePlayerWithIdOnly = await prisma.matchGamePlayer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MatchGamePlayerFindManyArgs>(args?: SelectSubset<T, MatchGamePlayerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MatchGamePlayer.
+     * @param {MatchGamePlayerCreateArgs} args - Arguments to create a MatchGamePlayer.
+     * @example
+     * // Create one MatchGamePlayer
+     * const MatchGamePlayer = await prisma.matchGamePlayer.create({
+     *   data: {
+     *     // ... data to create a MatchGamePlayer
+     *   }
+     * })
+     * 
+     */
+    create<T extends MatchGamePlayerCreateArgs>(args: SelectSubset<T, MatchGamePlayerCreateArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MatchGamePlayers.
+     * @param {MatchGamePlayerCreateManyArgs} args - Arguments to create many MatchGamePlayers.
+     * @example
+     * // Create many MatchGamePlayers
+     * const matchGamePlayer = await prisma.matchGamePlayer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MatchGamePlayerCreateManyArgs>(args?: SelectSubset<T, MatchGamePlayerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MatchGamePlayers and returns the data saved in the database.
+     * @param {MatchGamePlayerCreateManyAndReturnArgs} args - Arguments to create many MatchGamePlayers.
+     * @example
+     * // Create many MatchGamePlayers
+     * const matchGamePlayer = await prisma.matchGamePlayer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MatchGamePlayers and only return the `id`
+     * const matchGamePlayerWithIdOnly = await prisma.matchGamePlayer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MatchGamePlayerCreateManyAndReturnArgs>(args?: SelectSubset<T, MatchGamePlayerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MatchGamePlayer.
+     * @param {MatchGamePlayerDeleteArgs} args - Arguments to delete one MatchGamePlayer.
+     * @example
+     * // Delete one MatchGamePlayer
+     * const MatchGamePlayer = await prisma.matchGamePlayer.delete({
+     *   where: {
+     *     // ... filter to delete one MatchGamePlayer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MatchGamePlayerDeleteArgs>(args: SelectSubset<T, MatchGamePlayerDeleteArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MatchGamePlayer.
+     * @param {MatchGamePlayerUpdateArgs} args - Arguments to update one MatchGamePlayer.
+     * @example
+     * // Update one MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MatchGamePlayerUpdateArgs>(args: SelectSubset<T, MatchGamePlayerUpdateArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MatchGamePlayers.
+     * @param {MatchGamePlayerDeleteManyArgs} args - Arguments to filter MatchGamePlayers to delete.
+     * @example
+     * // Delete a few MatchGamePlayers
+     * const { count } = await prisma.matchGamePlayer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MatchGamePlayerDeleteManyArgs>(args?: SelectSubset<T, MatchGamePlayerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchGamePlayers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MatchGamePlayers
+     * const matchGamePlayer = await prisma.matchGamePlayer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MatchGamePlayerUpdateManyArgs>(args: SelectSubset<T, MatchGamePlayerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchGamePlayers and returns the data updated in the database.
+     * @param {MatchGamePlayerUpdateManyAndReturnArgs} args - Arguments to update many MatchGamePlayers.
+     * @example
+     * // Update many MatchGamePlayers
+     * const matchGamePlayer = await prisma.matchGamePlayer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MatchGamePlayers and only return the `id`
+     * const matchGamePlayerWithIdOnly = await prisma.matchGamePlayer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MatchGamePlayerUpdateManyAndReturnArgs>(args: SelectSubset<T, MatchGamePlayerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MatchGamePlayer.
+     * @param {MatchGamePlayerUpsertArgs} args - Arguments to update or create a MatchGamePlayer.
+     * @example
+     * // Update or create a MatchGamePlayer
+     * const matchGamePlayer = await prisma.matchGamePlayer.upsert({
+     *   create: {
+     *     // ... data to create a MatchGamePlayer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MatchGamePlayer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MatchGamePlayerUpsertArgs>(args: SelectSubset<T, MatchGamePlayerUpsertArgs<ExtArgs>>): Prisma__MatchGamePlayerClient<$Result.GetResult<Prisma.$MatchGamePlayerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MatchGamePlayers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerCountArgs} args - Arguments to filter MatchGamePlayers to count.
+     * @example
+     * // Count the number of MatchGamePlayers
+     * const count = await prisma.matchGamePlayer.count({
+     *   where: {
+     *     // ... the filter for the MatchGamePlayers we want to count
+     *   }
+     * })
+    **/
+    count<T extends MatchGamePlayerCountArgs>(
+      args?: Subset<T, MatchGamePlayerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MatchGamePlayerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MatchGamePlayer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MatchGamePlayerAggregateArgs>(args: Subset<T, MatchGamePlayerAggregateArgs>): Prisma.PrismaPromise<GetMatchGamePlayerAggregateType<T>>
+
+    /**
+     * Group by MatchGamePlayer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchGamePlayerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MatchGamePlayerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MatchGamePlayerGroupByArgs['orderBy'] }
+        : { orderBy?: MatchGamePlayerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MatchGamePlayerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMatchGamePlayerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MatchGamePlayer model
+   */
+  readonly fields: MatchGamePlayerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MatchGamePlayer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MatchGamePlayerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    MatchGame<T extends MatchGameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MatchGameDefaultArgs<ExtArgs>>): Prisma__MatchGameClient<$Result.GetResult<Prisma.$MatchGamePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    User<T extends MatchGamePlayer$UserArgs<ExtArgs> = {}>(args?: Subset<T, MatchGamePlayer$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MatchGamePlayer model
+   */
+  interface MatchGamePlayerFieldRefs {
+    readonly id: FieldRef<"MatchGamePlayer", 'String'>
+    readonly gameId: FieldRef<"MatchGamePlayer", 'String'>
+    readonly userId: FieldRef<"MatchGamePlayer", 'String'>
+    readonly playerName: FieldRef<"MatchGamePlayer", 'String'>
+    readonly team: FieldRef<"MatchGamePlayer", 'Int'>
+    readonly position: FieldRef<"MatchGamePlayer", 'Int'>
+    readonly score: FieldRef<"MatchGamePlayer", 'Int'>
+    readonly createdAt: FieldRef<"MatchGamePlayer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MatchGamePlayer findUnique
+   */
+  export type MatchGamePlayerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGamePlayer to fetch.
+     */
+    where: MatchGamePlayerWhereUniqueInput
+  }
+
+  /**
+   * MatchGamePlayer findUniqueOrThrow
+   */
+  export type MatchGamePlayerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGamePlayer to fetch.
+     */
+    where: MatchGamePlayerWhereUniqueInput
+  }
+
+  /**
+   * MatchGamePlayer findFirst
+   */
+  export type MatchGamePlayerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGamePlayer to fetch.
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGamePlayers to fetch.
+     */
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchGamePlayers.
+     */
+    cursor?: MatchGamePlayerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGamePlayers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGamePlayers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchGamePlayers.
+     */
+    distinct?: MatchGamePlayerScalarFieldEnum | MatchGamePlayerScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGamePlayer findFirstOrThrow
+   */
+  export type MatchGamePlayerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGamePlayer to fetch.
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGamePlayers to fetch.
+     */
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchGamePlayers.
+     */
+    cursor?: MatchGamePlayerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGamePlayers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGamePlayers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchGamePlayers.
+     */
+    distinct?: MatchGamePlayerScalarFieldEnum | MatchGamePlayerScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGamePlayer findMany
+   */
+  export type MatchGamePlayerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchGamePlayers to fetch.
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchGamePlayers to fetch.
+     */
+    orderBy?: MatchGamePlayerOrderByWithRelationInput | MatchGamePlayerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MatchGamePlayers.
+     */
+    cursor?: MatchGamePlayerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchGamePlayers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchGamePlayers.
+     */
+    skip?: number
+    distinct?: MatchGamePlayerScalarFieldEnum | MatchGamePlayerScalarFieldEnum[]
+  }
+
+  /**
+   * MatchGamePlayer create
+   */
+  export type MatchGamePlayerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MatchGamePlayer.
+     */
+    data: XOR<MatchGamePlayerCreateInput, MatchGamePlayerUncheckedCreateInput>
+  }
+
+  /**
+   * MatchGamePlayer createMany
+   */
+  export type MatchGamePlayerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MatchGamePlayers.
+     */
+    data: MatchGamePlayerCreateManyInput | MatchGamePlayerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MatchGamePlayer createManyAndReturn
+   */
+  export type MatchGamePlayerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * The data used to create many MatchGamePlayers.
+     */
+    data: MatchGamePlayerCreateManyInput | MatchGamePlayerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchGamePlayer update
+   */
+  export type MatchGamePlayerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MatchGamePlayer.
+     */
+    data: XOR<MatchGamePlayerUpdateInput, MatchGamePlayerUncheckedUpdateInput>
+    /**
+     * Choose, which MatchGamePlayer to update.
+     */
+    where: MatchGamePlayerWhereUniqueInput
+  }
+
+  /**
+   * MatchGamePlayer updateMany
+   */
+  export type MatchGamePlayerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MatchGamePlayers.
+     */
+    data: XOR<MatchGamePlayerUpdateManyMutationInput, MatchGamePlayerUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchGamePlayers to update
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * Limit how many MatchGamePlayers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchGamePlayer updateManyAndReturn
+   */
+  export type MatchGamePlayerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * The data used to update MatchGamePlayers.
+     */
+    data: XOR<MatchGamePlayerUpdateManyMutationInput, MatchGamePlayerUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchGamePlayers to update
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * Limit how many MatchGamePlayers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchGamePlayer upsert
+   */
+  export type MatchGamePlayerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MatchGamePlayer to update in case it exists.
+     */
+    where: MatchGamePlayerWhereUniqueInput
+    /**
+     * In case the MatchGamePlayer found by the `where` argument doesn't exist, create a new MatchGamePlayer with this data.
+     */
+    create: XOR<MatchGamePlayerCreateInput, MatchGamePlayerUncheckedCreateInput>
+    /**
+     * In case the MatchGamePlayer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MatchGamePlayerUpdateInput, MatchGamePlayerUncheckedUpdateInput>
+  }
+
+  /**
+   * MatchGamePlayer delete
+   */
+  export type MatchGamePlayerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+    /**
+     * Filter which MatchGamePlayer to delete.
+     */
+    where: MatchGamePlayerWhereUniqueInput
+  }
+
+  /**
+   * MatchGamePlayer deleteMany
+   */
+  export type MatchGamePlayerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchGamePlayers to delete
+     */
+    where?: MatchGamePlayerWhereInput
+    /**
+     * Limit how many MatchGamePlayers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchGamePlayer.User
+   */
+  export type MatchGamePlayer$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * MatchGamePlayer without action
+   */
+  export type MatchGamePlayerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchGamePlayer
+     */
+    select?: MatchGamePlayerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchGamePlayer
+     */
+    omit?: MatchGamePlayerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchGamePlayerInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -20313,6 +24133,46 @@ export namespace Prisma {
   };
 
   export type ScoreRecordScalarFieldEnum = (typeof ScoreRecordScalarFieldEnum)[keyof typeof ScoreRecordScalarFieldEnum]
+
+
+  export const MatchSessionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    date: 'date',
+    playerCount: 'playerCount',
+    createdBy: 'createdBy',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MatchSessionScalarFieldEnum = (typeof MatchSessionScalarFieldEnum)[keyof typeof MatchSessionScalarFieldEnum]
+
+
+  export const MatchGameScalarFieldEnum: {
+    id: 'id',
+    sessionId: 'sessionId',
+    gameNumber: 'gameNumber',
+    status: 'status',
+    winner: 'winner',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MatchGameScalarFieldEnum = (typeof MatchGameScalarFieldEnum)[keyof typeof MatchGameScalarFieldEnum]
+
+
+  export const MatchGamePlayerScalarFieldEnum: {
+    id: 'id',
+    gameId: 'gameId',
+    userId: 'userId',
+    playerName: 'playerName',
+    team: 'team',
+    position: 'position',
+    score: 'score',
+    createdAt: 'createdAt'
+  };
+
+  export type MatchGamePlayerScalarFieldEnum = (typeof MatchGamePlayerScalarFieldEnum)[keyof typeof MatchGamePlayerScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -20675,6 +24535,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     LessonReservation?: LessonReservationListRelationFilter
     LessonSlot?: LessonSlotListRelationFilter
+    MatchGamePlayer?: MatchGamePlayerListRelationFilter
     MatchRequest?: MatchRequestListRelationFilter
     PlayerProfile?: XOR<PlayerProfileNullableScalarRelationFilter, PlayerProfileWhereInput> | null
     posts?: PostListRelationFilter
@@ -20696,6 +24557,7 @@ export namespace Prisma {
     accounts?: AccountOrderByRelationAggregateInput
     LessonReservation?: LessonReservationOrderByRelationAggregateInput
     LessonSlot?: LessonSlotOrderByRelationAggregateInput
+    MatchGamePlayer?: MatchGamePlayerOrderByRelationAggregateInput
     MatchRequest?: MatchRequestOrderByRelationAggregateInput
     PlayerProfile?: PlayerProfileOrderByWithRelationInput
     posts?: PostOrderByRelationAggregateInput
@@ -20720,6 +24582,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     LessonReservation?: LessonReservationListRelationFilter
     LessonSlot?: LessonSlotListRelationFilter
+    MatchGamePlayer?: MatchGamePlayerListRelationFilter
     MatchRequest?: MatchRequestListRelationFilter
     PlayerProfile?: XOR<PlayerProfileNullableScalarRelationFilter, PlayerProfileWhereInput> | null
     posts?: PostListRelationFilter
@@ -21508,6 +25371,219 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"ScoreRecord"> | Date | string
   }
 
+  export type MatchSessionWhereInput = {
+    AND?: MatchSessionWhereInput | MatchSessionWhereInput[]
+    OR?: MatchSessionWhereInput[]
+    NOT?: MatchSessionWhereInput | MatchSessionWhereInput[]
+    id?: StringFilter<"MatchSession"> | string
+    name?: StringFilter<"MatchSession"> | string
+    date?: DateTimeFilter<"MatchSession"> | Date | string
+    playerCount?: IntFilter<"MatchSession"> | number
+    createdBy?: StringFilter<"MatchSession"> | string
+    createdAt?: DateTimeFilter<"MatchSession"> | Date | string
+    updatedAt?: DateTimeFilter<"MatchSession"> | Date | string
+    MatchGame?: MatchGameListRelationFilter
+  }
+
+  export type MatchSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    playerCount?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    MatchGame?: MatchGameOrderByRelationAggregateInput
+  }
+
+  export type MatchSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MatchSessionWhereInput | MatchSessionWhereInput[]
+    OR?: MatchSessionWhereInput[]
+    NOT?: MatchSessionWhereInput | MatchSessionWhereInput[]
+    name?: StringFilter<"MatchSession"> | string
+    date?: DateTimeFilter<"MatchSession"> | Date | string
+    playerCount?: IntFilter<"MatchSession"> | number
+    createdBy?: StringFilter<"MatchSession"> | string
+    createdAt?: DateTimeFilter<"MatchSession"> | Date | string
+    updatedAt?: DateTimeFilter<"MatchSession"> | Date | string
+    MatchGame?: MatchGameListRelationFilter
+  }, "id">
+
+  export type MatchSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    playerCount?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MatchSessionCountOrderByAggregateInput
+    _avg?: MatchSessionAvgOrderByAggregateInput
+    _max?: MatchSessionMaxOrderByAggregateInput
+    _min?: MatchSessionMinOrderByAggregateInput
+    _sum?: MatchSessionSumOrderByAggregateInput
+  }
+
+  export type MatchSessionScalarWhereWithAggregatesInput = {
+    AND?: MatchSessionScalarWhereWithAggregatesInput | MatchSessionScalarWhereWithAggregatesInput[]
+    OR?: MatchSessionScalarWhereWithAggregatesInput[]
+    NOT?: MatchSessionScalarWhereWithAggregatesInput | MatchSessionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MatchSession"> | string
+    name?: StringWithAggregatesFilter<"MatchSession"> | string
+    date?: DateTimeWithAggregatesFilter<"MatchSession"> | Date | string
+    playerCount?: IntWithAggregatesFilter<"MatchSession"> | number
+    createdBy?: StringWithAggregatesFilter<"MatchSession"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MatchSession"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MatchSession"> | Date | string
+  }
+
+  export type MatchGameWhereInput = {
+    AND?: MatchGameWhereInput | MatchGameWhereInput[]
+    OR?: MatchGameWhereInput[]
+    NOT?: MatchGameWhereInput | MatchGameWhereInput[]
+    id?: StringFilter<"MatchGame"> | string
+    sessionId?: StringFilter<"MatchGame"> | string
+    gameNumber?: IntFilter<"MatchGame"> | number
+    status?: StringFilter<"MatchGame"> | string
+    winner?: IntNullableFilter<"MatchGame"> | number | null
+    createdAt?: DateTimeFilter<"MatchGame"> | Date | string
+    updatedAt?: DateTimeFilter<"MatchGame"> | Date | string
+    MatchSession?: XOR<MatchSessionScalarRelationFilter, MatchSessionWhereInput>
+    MatchGamePlayer?: MatchGamePlayerListRelationFilter
+  }
+
+  export type MatchGameOrderByWithRelationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    gameNumber?: SortOrder
+    status?: SortOrder
+    winner?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    MatchSession?: MatchSessionOrderByWithRelationInput
+    MatchGamePlayer?: MatchGamePlayerOrderByRelationAggregateInput
+  }
+
+  export type MatchGameWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MatchGameWhereInput | MatchGameWhereInput[]
+    OR?: MatchGameWhereInput[]
+    NOT?: MatchGameWhereInput | MatchGameWhereInput[]
+    sessionId?: StringFilter<"MatchGame"> | string
+    gameNumber?: IntFilter<"MatchGame"> | number
+    status?: StringFilter<"MatchGame"> | string
+    winner?: IntNullableFilter<"MatchGame"> | number | null
+    createdAt?: DateTimeFilter<"MatchGame"> | Date | string
+    updatedAt?: DateTimeFilter<"MatchGame"> | Date | string
+    MatchSession?: XOR<MatchSessionScalarRelationFilter, MatchSessionWhereInput>
+    MatchGamePlayer?: MatchGamePlayerListRelationFilter
+  }, "id">
+
+  export type MatchGameOrderByWithAggregationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    gameNumber?: SortOrder
+    status?: SortOrder
+    winner?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MatchGameCountOrderByAggregateInput
+    _avg?: MatchGameAvgOrderByAggregateInput
+    _max?: MatchGameMaxOrderByAggregateInput
+    _min?: MatchGameMinOrderByAggregateInput
+    _sum?: MatchGameSumOrderByAggregateInput
+  }
+
+  export type MatchGameScalarWhereWithAggregatesInput = {
+    AND?: MatchGameScalarWhereWithAggregatesInput | MatchGameScalarWhereWithAggregatesInput[]
+    OR?: MatchGameScalarWhereWithAggregatesInput[]
+    NOT?: MatchGameScalarWhereWithAggregatesInput | MatchGameScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MatchGame"> | string
+    sessionId?: StringWithAggregatesFilter<"MatchGame"> | string
+    gameNumber?: IntWithAggregatesFilter<"MatchGame"> | number
+    status?: StringWithAggregatesFilter<"MatchGame"> | string
+    winner?: IntNullableWithAggregatesFilter<"MatchGame"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"MatchGame"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MatchGame"> | Date | string
+  }
+
+  export type MatchGamePlayerWhereInput = {
+    AND?: MatchGamePlayerWhereInput | MatchGamePlayerWhereInput[]
+    OR?: MatchGamePlayerWhereInput[]
+    NOT?: MatchGamePlayerWhereInput | MatchGamePlayerWhereInput[]
+    id?: StringFilter<"MatchGamePlayer"> | string
+    gameId?: StringFilter<"MatchGamePlayer"> | string
+    userId?: StringNullableFilter<"MatchGamePlayer"> | string | null
+    playerName?: StringFilter<"MatchGamePlayer"> | string
+    team?: IntFilter<"MatchGamePlayer"> | number
+    position?: IntFilter<"MatchGamePlayer"> | number
+    score?: IntNullableFilter<"MatchGamePlayer"> | number | null
+    createdAt?: DateTimeFilter<"MatchGamePlayer"> | Date | string
+    MatchGame?: XOR<MatchGameScalarRelationFilter, MatchGameWhereInput>
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type MatchGamePlayerOrderByWithRelationInput = {
+    id?: SortOrder
+    gameId?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    playerName?: SortOrder
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    MatchGame?: MatchGameOrderByWithRelationInput
+    User?: UserOrderByWithRelationInput
+  }
+
+  export type MatchGamePlayerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    gameId_position?: MatchGamePlayerGameIdPositionCompoundUniqueInput
+    AND?: MatchGamePlayerWhereInput | MatchGamePlayerWhereInput[]
+    OR?: MatchGamePlayerWhereInput[]
+    NOT?: MatchGamePlayerWhereInput | MatchGamePlayerWhereInput[]
+    gameId?: StringFilter<"MatchGamePlayer"> | string
+    userId?: StringNullableFilter<"MatchGamePlayer"> | string | null
+    playerName?: StringFilter<"MatchGamePlayer"> | string
+    team?: IntFilter<"MatchGamePlayer"> | number
+    position?: IntFilter<"MatchGamePlayer"> | number
+    score?: IntNullableFilter<"MatchGamePlayer"> | number | null
+    createdAt?: DateTimeFilter<"MatchGamePlayer"> | Date | string
+    MatchGame?: XOR<MatchGameScalarRelationFilter, MatchGameWhereInput>
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "gameId_position">
+
+  export type MatchGamePlayerOrderByWithAggregationInput = {
+    id?: SortOrder
+    gameId?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    playerName?: SortOrder
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: MatchGamePlayerCountOrderByAggregateInput
+    _avg?: MatchGamePlayerAvgOrderByAggregateInput
+    _max?: MatchGamePlayerMaxOrderByAggregateInput
+    _min?: MatchGamePlayerMinOrderByAggregateInput
+    _sum?: MatchGamePlayerSumOrderByAggregateInput
+  }
+
+  export type MatchGamePlayerScalarWhereWithAggregatesInput = {
+    AND?: MatchGamePlayerScalarWhereWithAggregatesInput | MatchGamePlayerScalarWhereWithAggregatesInput[]
+    OR?: MatchGamePlayerScalarWhereWithAggregatesInput[]
+    NOT?: MatchGamePlayerScalarWhereWithAggregatesInput | MatchGamePlayerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MatchGamePlayer"> | string
+    gameId?: StringWithAggregatesFilter<"MatchGamePlayer"> | string
+    userId?: StringNullableWithAggregatesFilter<"MatchGamePlayer"> | string | null
+    playerName?: StringWithAggregatesFilter<"MatchGamePlayer"> | string
+    team?: IntWithAggregatesFilter<"MatchGamePlayer"> | number
+    position?: IntWithAggregatesFilter<"MatchGamePlayer"> | number
+    score?: IntNullableWithAggregatesFilter<"MatchGamePlayer"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"MatchGamePlayer"> | Date | string
+  }
+
   export type PostCreateInput = {
     name: string
     createdAt?: Date | string
@@ -21731,6 +25807,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -21752,6 +25829,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -21773,6 +25851,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -21794,6 +25873,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22611,6 +26691,228 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MatchSessionCreateInput = {
+    id: string
+    name: string
+    date: Date | string
+    playerCount: number
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchGame?: MatchGameCreateNestedManyWithoutMatchSessionInput
+  }
+
+  export type MatchSessionUncheckedCreateInput = {
+    id: string
+    name: string
+    date: Date | string
+    playerCount: number
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchGame?: MatchGameUncheckedCreateNestedManyWithoutMatchSessionInput
+  }
+
+  export type MatchSessionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGame?: MatchGameUpdateManyWithoutMatchSessionNestedInput
+  }
+
+  export type MatchSessionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGame?: MatchGameUncheckedUpdateManyWithoutMatchSessionNestedInput
+  }
+
+  export type MatchSessionCreateManyInput = {
+    id: string
+    name: string
+    date: Date | string
+    playerCount: number
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchSessionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchSessionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGameCreateInput = {
+    id: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchSession: MatchSessionCreateNestedOneWithoutMatchGameInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutMatchGameInput
+  }
+
+  export type MatchGameUncheckedCreateInput = {
+    id: string
+    sessionId: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutMatchGameInput
+  }
+
+  export type MatchGameUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchSession?: MatchSessionUpdateOneRequiredWithoutMatchGameNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutMatchGameNestedInput
+  }
+
+  export type MatchGameUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutMatchGameNestedInput
+  }
+
+  export type MatchGameCreateManyInput = {
+    id: string
+    sessionId: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchGameUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGameUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerCreateInput = {
+    id: string
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+    MatchGame: MatchGameCreateNestedOneWithoutMatchGamePlayerInput
+    User?: UserCreateNestedOneWithoutMatchGamePlayerInput
+  }
+
+  export type MatchGamePlayerUncheckedCreateInput = {
+    id: string
+    gameId: string
+    userId?: string | null
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGame?: MatchGameUpdateOneRequiredWithoutMatchGamePlayerNestedInput
+    User?: UserUpdateOneWithoutMatchGamePlayerNestedInput
+  }
+
+  export type MatchGamePlayerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerCreateManyInput = {
+    id: string
+    gameId: string
+    userId?: string | null
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -22918,6 +27220,12 @@ export namespace Prisma {
     none?: LessonSlotWhereInput
   }
 
+  export type MatchGamePlayerListRelationFilter = {
+    every?: MatchGamePlayerWhereInput
+    some?: MatchGamePlayerWhereInput
+    none?: MatchGamePlayerWhereInput
+  }
+
   export type MatchRequestListRelationFilter = {
     every?: MatchRequestWhereInput
     some?: MatchRequestWhereInput
@@ -22962,6 +27270,10 @@ export namespace Prisma {
   }
 
   export type LessonSlotOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MatchGamePlayerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23521,6 +27833,154 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type MatchGameListRelationFilter = {
+    every?: MatchGameWhereInput
+    some?: MatchGameWhereInput
+    none?: MatchGameWhereInput
+  }
+
+  export type MatchGameOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MatchSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    playerCount?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchSessionAvgOrderByAggregateInput = {
+    playerCount?: SortOrder
+  }
+
+  export type MatchSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    playerCount?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    playerCount?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchSessionSumOrderByAggregateInput = {
+    playerCount?: SortOrder
+  }
+
+  export type MatchSessionScalarRelationFilter = {
+    is?: MatchSessionWhereInput
+    isNot?: MatchSessionWhereInput
+  }
+
+  export type MatchGameCountOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    gameNumber?: SortOrder
+    status?: SortOrder
+    winner?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchGameAvgOrderByAggregateInput = {
+    gameNumber?: SortOrder
+    winner?: SortOrder
+  }
+
+  export type MatchGameMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    gameNumber?: SortOrder
+    status?: SortOrder
+    winner?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchGameMinOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    gameNumber?: SortOrder
+    status?: SortOrder
+    winner?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MatchGameSumOrderByAggregateInput = {
+    gameNumber?: SortOrder
+    winner?: SortOrder
+  }
+
+  export type MatchGameScalarRelationFilter = {
+    is?: MatchGameWhereInput
+    isNot?: MatchGameWhereInput
+  }
+
+  export type MatchGamePlayerGameIdPositionCompoundUniqueInput = {
+    gameId: string
+    position: number
+  }
+
+  export type MatchGamePlayerCountOrderByAggregateInput = {
+    id?: SortOrder
+    gameId?: SortOrder
+    userId?: SortOrder
+    playerName?: SortOrder
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MatchGamePlayerAvgOrderByAggregateInput = {
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrder
+  }
+
+  export type MatchGamePlayerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    gameId?: SortOrder
+    userId?: SortOrder
+    playerName?: SortOrder
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MatchGamePlayerMinOrderByAggregateInput = {
+    id?: SortOrder
+    gameId?: SortOrder
+    userId?: SortOrder
+    playerName?: SortOrder
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MatchGamePlayerSumOrderByAggregateInput = {
+    team?: SortOrder
+    position?: SortOrder
+    score?: SortOrder
+  }
+
   export type UserCreateNestedOneWithoutPostsInput = {
     create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPostsInput
@@ -23612,6 +28072,13 @@ export namespace Prisma {
     connect?: LessonSlotWhereUniqueInput | LessonSlotWhereUniqueInput[]
   }
 
+  export type MatchGamePlayerCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput> | MatchGamePlayerCreateWithoutUserInput[] | MatchGamePlayerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutUserInput | MatchGamePlayerCreateOrConnectWithoutUserInput[]
+    createMany?: MatchGamePlayerCreateManyUserInputEnvelope
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+  }
+
   export type MatchRequestCreateNestedManyWithoutUserInput = {
     create?: XOR<MatchRequestCreateWithoutUserInput, MatchRequestUncheckedCreateWithoutUserInput> | MatchRequestCreateWithoutUserInput[] | MatchRequestUncheckedCreateWithoutUserInput[]
     connectOrCreate?: MatchRequestCreateOrConnectWithoutUserInput | MatchRequestCreateOrConnectWithoutUserInput[]
@@ -23679,6 +28146,13 @@ export namespace Prisma {
     connectOrCreate?: LessonSlotCreateOrConnectWithoutUserInput | LessonSlotCreateOrConnectWithoutUserInput[]
     createMany?: LessonSlotCreateManyUserInputEnvelope
     connect?: LessonSlotWhereUniqueInput | LessonSlotWhereUniqueInput[]
+  }
+
+  export type MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput> | MatchGamePlayerCreateWithoutUserInput[] | MatchGamePlayerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutUserInput | MatchGamePlayerCreateOrConnectWithoutUserInput[]
+    createMany?: MatchGamePlayerCreateManyUserInputEnvelope
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
   }
 
   export type MatchRequestUncheckedCreateNestedManyWithoutUserInput = {
@@ -23777,6 +28251,20 @@ export namespace Prisma {
     update?: LessonSlotUpdateWithWhereUniqueWithoutUserInput | LessonSlotUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: LessonSlotUpdateManyWithWhereWithoutUserInput | LessonSlotUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: LessonSlotScalarWhereInput | LessonSlotScalarWhereInput[]
+  }
+
+  export type MatchGamePlayerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput> | MatchGamePlayerCreateWithoutUserInput[] | MatchGamePlayerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutUserInput | MatchGamePlayerCreateOrConnectWithoutUserInput[]
+    upsert?: MatchGamePlayerUpsertWithWhereUniqueWithoutUserInput | MatchGamePlayerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchGamePlayerCreateManyUserInputEnvelope
+    set?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    disconnect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    delete?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    update?: MatchGamePlayerUpdateWithWhereUniqueWithoutUserInput | MatchGamePlayerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchGamePlayerUpdateManyWithWhereWithoutUserInput | MatchGamePlayerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
   }
 
   export type MatchRequestUpdateManyWithoutUserNestedInput = {
@@ -23913,6 +28401,20 @@ export namespace Prisma {
     update?: LessonSlotUpdateWithWhereUniqueWithoutUserInput | LessonSlotUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: LessonSlotUpdateManyWithWhereWithoutUserInput | LessonSlotUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: LessonSlotScalarWhereInput | LessonSlotScalarWhereInput[]
+  }
+
+  export type MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput> | MatchGamePlayerCreateWithoutUserInput[] | MatchGamePlayerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutUserInput | MatchGamePlayerCreateOrConnectWithoutUserInput[]
+    upsert?: MatchGamePlayerUpsertWithWhereUniqueWithoutUserInput | MatchGamePlayerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchGamePlayerCreateManyUserInputEnvelope
+    set?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    disconnect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    delete?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    update?: MatchGamePlayerUpdateWithWhereUniqueWithoutUserInput | MatchGamePlayerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchGamePlayerUpdateManyWithWhereWithoutUserInput | MatchGamePlayerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
   }
 
   export type MatchRequestUncheckedUpdateManyWithoutUserNestedInput = {
@@ -24337,6 +28839,134 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutScoreRecord_ScoreRecord_playerIdToUserInput, UserUpdateWithoutScoreRecord_ScoreRecord_playerIdToUserInput>, UserUncheckedUpdateWithoutScoreRecord_ScoreRecord_playerIdToUserInput>
   }
 
+  export type MatchGameCreateNestedManyWithoutMatchSessionInput = {
+    create?: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput> | MatchGameCreateWithoutMatchSessionInput[] | MatchGameUncheckedCreateWithoutMatchSessionInput[]
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchSessionInput | MatchGameCreateOrConnectWithoutMatchSessionInput[]
+    createMany?: MatchGameCreateManyMatchSessionInputEnvelope
+    connect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+  }
+
+  export type MatchGameUncheckedCreateNestedManyWithoutMatchSessionInput = {
+    create?: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput> | MatchGameCreateWithoutMatchSessionInput[] | MatchGameUncheckedCreateWithoutMatchSessionInput[]
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchSessionInput | MatchGameCreateOrConnectWithoutMatchSessionInput[]
+    createMany?: MatchGameCreateManyMatchSessionInputEnvelope
+    connect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+  }
+
+  export type MatchGameUpdateManyWithoutMatchSessionNestedInput = {
+    create?: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput> | MatchGameCreateWithoutMatchSessionInput[] | MatchGameUncheckedCreateWithoutMatchSessionInput[]
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchSessionInput | MatchGameCreateOrConnectWithoutMatchSessionInput[]
+    upsert?: MatchGameUpsertWithWhereUniqueWithoutMatchSessionInput | MatchGameUpsertWithWhereUniqueWithoutMatchSessionInput[]
+    createMany?: MatchGameCreateManyMatchSessionInputEnvelope
+    set?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    disconnect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    delete?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    connect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    update?: MatchGameUpdateWithWhereUniqueWithoutMatchSessionInput | MatchGameUpdateWithWhereUniqueWithoutMatchSessionInput[]
+    updateMany?: MatchGameUpdateManyWithWhereWithoutMatchSessionInput | MatchGameUpdateManyWithWhereWithoutMatchSessionInput[]
+    deleteMany?: MatchGameScalarWhereInput | MatchGameScalarWhereInput[]
+  }
+
+  export type MatchGameUncheckedUpdateManyWithoutMatchSessionNestedInput = {
+    create?: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput> | MatchGameCreateWithoutMatchSessionInput[] | MatchGameUncheckedCreateWithoutMatchSessionInput[]
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchSessionInput | MatchGameCreateOrConnectWithoutMatchSessionInput[]
+    upsert?: MatchGameUpsertWithWhereUniqueWithoutMatchSessionInput | MatchGameUpsertWithWhereUniqueWithoutMatchSessionInput[]
+    createMany?: MatchGameCreateManyMatchSessionInputEnvelope
+    set?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    disconnect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    delete?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    connect?: MatchGameWhereUniqueInput | MatchGameWhereUniqueInput[]
+    update?: MatchGameUpdateWithWhereUniqueWithoutMatchSessionInput | MatchGameUpdateWithWhereUniqueWithoutMatchSessionInput[]
+    updateMany?: MatchGameUpdateManyWithWhereWithoutMatchSessionInput | MatchGameUpdateManyWithWhereWithoutMatchSessionInput[]
+    deleteMany?: MatchGameScalarWhereInput | MatchGameScalarWhereInput[]
+  }
+
+  export type MatchSessionCreateNestedOneWithoutMatchGameInput = {
+    create?: XOR<MatchSessionCreateWithoutMatchGameInput, MatchSessionUncheckedCreateWithoutMatchGameInput>
+    connectOrCreate?: MatchSessionCreateOrConnectWithoutMatchGameInput
+    connect?: MatchSessionWhereUniqueInput
+  }
+
+  export type MatchGamePlayerCreateNestedManyWithoutMatchGameInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput> | MatchGamePlayerCreateWithoutMatchGameInput[] | MatchGamePlayerUncheckedCreateWithoutMatchGameInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutMatchGameInput | MatchGamePlayerCreateOrConnectWithoutMatchGameInput[]
+    createMany?: MatchGamePlayerCreateManyMatchGameInputEnvelope
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+  }
+
+  export type MatchGamePlayerUncheckedCreateNestedManyWithoutMatchGameInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput> | MatchGamePlayerCreateWithoutMatchGameInput[] | MatchGamePlayerUncheckedCreateWithoutMatchGameInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutMatchGameInput | MatchGamePlayerCreateOrConnectWithoutMatchGameInput[]
+    createMany?: MatchGamePlayerCreateManyMatchGameInputEnvelope
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+  }
+
+  export type MatchSessionUpdateOneRequiredWithoutMatchGameNestedInput = {
+    create?: XOR<MatchSessionCreateWithoutMatchGameInput, MatchSessionUncheckedCreateWithoutMatchGameInput>
+    connectOrCreate?: MatchSessionCreateOrConnectWithoutMatchGameInput
+    upsert?: MatchSessionUpsertWithoutMatchGameInput
+    connect?: MatchSessionWhereUniqueInput
+    update?: XOR<XOR<MatchSessionUpdateToOneWithWhereWithoutMatchGameInput, MatchSessionUpdateWithoutMatchGameInput>, MatchSessionUncheckedUpdateWithoutMatchGameInput>
+  }
+
+  export type MatchGamePlayerUpdateManyWithoutMatchGameNestedInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput> | MatchGamePlayerCreateWithoutMatchGameInput[] | MatchGamePlayerUncheckedCreateWithoutMatchGameInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutMatchGameInput | MatchGamePlayerCreateOrConnectWithoutMatchGameInput[]
+    upsert?: MatchGamePlayerUpsertWithWhereUniqueWithoutMatchGameInput | MatchGamePlayerUpsertWithWhereUniqueWithoutMatchGameInput[]
+    createMany?: MatchGamePlayerCreateManyMatchGameInputEnvelope
+    set?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    disconnect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    delete?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    update?: MatchGamePlayerUpdateWithWhereUniqueWithoutMatchGameInput | MatchGamePlayerUpdateWithWhereUniqueWithoutMatchGameInput[]
+    updateMany?: MatchGamePlayerUpdateManyWithWhereWithoutMatchGameInput | MatchGamePlayerUpdateManyWithWhereWithoutMatchGameInput[]
+    deleteMany?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
+  }
+
+  export type MatchGamePlayerUncheckedUpdateManyWithoutMatchGameNestedInput = {
+    create?: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput> | MatchGamePlayerCreateWithoutMatchGameInput[] | MatchGamePlayerUncheckedCreateWithoutMatchGameInput[]
+    connectOrCreate?: MatchGamePlayerCreateOrConnectWithoutMatchGameInput | MatchGamePlayerCreateOrConnectWithoutMatchGameInput[]
+    upsert?: MatchGamePlayerUpsertWithWhereUniqueWithoutMatchGameInput | MatchGamePlayerUpsertWithWhereUniqueWithoutMatchGameInput[]
+    createMany?: MatchGamePlayerCreateManyMatchGameInputEnvelope
+    set?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    disconnect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    delete?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    connect?: MatchGamePlayerWhereUniqueInput | MatchGamePlayerWhereUniqueInput[]
+    update?: MatchGamePlayerUpdateWithWhereUniqueWithoutMatchGameInput | MatchGamePlayerUpdateWithWhereUniqueWithoutMatchGameInput[]
+    updateMany?: MatchGamePlayerUpdateManyWithWhereWithoutMatchGameInput | MatchGamePlayerUpdateManyWithWhereWithoutMatchGameInput[]
+    deleteMany?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
+  }
+
+  export type MatchGameCreateNestedOneWithoutMatchGamePlayerInput = {
+    create?: XOR<MatchGameCreateWithoutMatchGamePlayerInput, MatchGameUncheckedCreateWithoutMatchGamePlayerInput>
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchGamePlayerInput
+    connect?: MatchGameWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMatchGamePlayerInput = {
+    create?: XOR<UserCreateWithoutMatchGamePlayerInput, UserUncheckedCreateWithoutMatchGamePlayerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMatchGamePlayerInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MatchGameUpdateOneRequiredWithoutMatchGamePlayerNestedInput = {
+    create?: XOR<MatchGameCreateWithoutMatchGamePlayerInput, MatchGameUncheckedCreateWithoutMatchGamePlayerInput>
+    connectOrCreate?: MatchGameCreateOrConnectWithoutMatchGamePlayerInput
+    upsert?: MatchGameUpsertWithoutMatchGamePlayerInput
+    connect?: MatchGameWhereUniqueInput
+    update?: XOR<XOR<MatchGameUpdateToOneWithWhereWithoutMatchGamePlayerInput, MatchGameUpdateWithoutMatchGamePlayerInput>, MatchGameUncheckedUpdateWithoutMatchGamePlayerInput>
+  }
+
+  export type UserUpdateOneWithoutMatchGamePlayerNestedInput = {
+    create?: XOR<UserCreateWithoutMatchGamePlayerInput, UserUncheckedCreateWithoutMatchGamePlayerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMatchGamePlayerInput
+    upsert?: UserUpsertWithoutMatchGamePlayerInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMatchGamePlayerInput, UserUpdateWithoutMatchGamePlayerInput>, UserUncheckedUpdateWithoutMatchGamePlayerInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -24590,6 +29220,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     Reservation?: ReservationCreateNestedManyWithoutUserInput
@@ -24610,6 +29241,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     Reservation?: ReservationUncheckedCreateNestedManyWithoutUserInput
@@ -24646,6 +29278,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     Reservation?: ReservationUpdateManyWithoutUserNestedInput
@@ -24666,6 +29299,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     Reservation?: ReservationUncheckedUpdateManyWithoutUserNestedInput
@@ -24685,6 +29319,7 @@ export namespace Prisma {
     userId?: string | null
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -24705,6 +29340,7 @@ export namespace Prisma {
     userId?: string | null
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -24741,6 +29377,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -24761,6 +29398,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -24782,6 +29420,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -24802,6 +29441,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -24838,6 +29478,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -24858,6 +29499,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -24961,6 +29603,36 @@ export namespace Prisma {
 
   export type LessonSlotCreateManyUserInputEnvelope = {
     data: LessonSlotCreateManyUserInput | LessonSlotCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MatchGamePlayerCreateWithoutUserInput = {
+    id: string
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+    MatchGame: MatchGameCreateNestedOneWithoutMatchGamePlayerInput
+  }
+
+  export type MatchGamePlayerUncheckedCreateWithoutUserInput = {
+    id: string
+    gameId: string
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerCreateOrConnectWithoutUserInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    create: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput>
+  }
+
+  export type MatchGamePlayerCreateManyUserInputEnvelope = {
+    data: MatchGamePlayerCreateManyUserInput | MatchGamePlayerCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -25231,6 +29903,36 @@ export namespace Prisma {
     endTime?: StringFilter<"LessonSlot"> | string
     duration?: StringFilter<"LessonSlot"> | string
     createdAt?: DateTimeFilter<"LessonSlot"> | Date | string
+  }
+
+  export type MatchGamePlayerUpsertWithWhereUniqueWithoutUserInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    update: XOR<MatchGamePlayerUpdateWithoutUserInput, MatchGamePlayerUncheckedUpdateWithoutUserInput>
+    create: XOR<MatchGamePlayerCreateWithoutUserInput, MatchGamePlayerUncheckedCreateWithoutUserInput>
+  }
+
+  export type MatchGamePlayerUpdateWithWhereUniqueWithoutUserInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    data: XOR<MatchGamePlayerUpdateWithoutUserInput, MatchGamePlayerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MatchGamePlayerUpdateManyWithWhereWithoutUserInput = {
+    where: MatchGamePlayerScalarWhereInput
+    data: XOR<MatchGamePlayerUpdateManyMutationInput, MatchGamePlayerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MatchGamePlayerScalarWhereInput = {
+    AND?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
+    OR?: MatchGamePlayerScalarWhereInput[]
+    NOT?: MatchGamePlayerScalarWhereInput | MatchGamePlayerScalarWhereInput[]
+    id?: StringFilter<"MatchGamePlayer"> | string
+    gameId?: StringFilter<"MatchGamePlayer"> | string
+    userId?: StringNullableFilter<"MatchGamePlayer"> | string | null
+    playerName?: StringFilter<"MatchGamePlayer"> | string
+    team?: IntFilter<"MatchGamePlayer"> | number
+    position?: IntFilter<"MatchGamePlayer"> | number
+    score?: IntNullableFilter<"MatchGamePlayer"> | number | null
+    createdAt?: DateTimeFilter<"MatchGamePlayer"> | Date | string
   }
 
   export type MatchRequestUpsertWithWhereUniqueWithoutUserInput = {
@@ -25641,6 +30343,7 @@ export namespace Prisma {
     userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -25661,6 +30364,7 @@ export namespace Prisma {
     userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -25732,6 +30436,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -25752,6 +30457,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -25796,6 +30502,7 @@ export namespace Prisma {
     userId?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -25816,6 +30523,7 @@ export namespace Prisma {
     userId?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -25887,6 +30595,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -25907,6 +30616,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -25953,6 +30663,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
     Reservation?: ReservationCreateNestedManyWithoutUserInput
@@ -25973,6 +30684,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
     Reservation?: ReservationUncheckedCreateNestedManyWithoutUserInput
@@ -26009,6 +30721,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
     Reservation?: ReservationUpdateManyWithoutUserNestedInput
@@ -26029,6 +30742,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
     Reservation?: ReservationUncheckedUpdateManyWithoutUserNestedInput
@@ -26049,6 +30763,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
     Reservation?: ReservationCreateNestedManyWithoutUserInput
@@ -26069,6 +30784,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
     Reservation?: ReservationUncheckedCreateNestedManyWithoutUserInput
@@ -26105,6 +30821,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
     Reservation?: ReservationUpdateManyWithoutUserNestedInput
@@ -26125,6 +30842,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
     Reservation?: ReservationUncheckedUpdateManyWithoutUserNestedInput
@@ -26164,6 +30882,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -26184,6 +30903,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -26245,6 +30965,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -26265,6 +30986,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -26285,6 +31007,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -26305,6 +31028,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -26330,6 +31054,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
     posts?: PostCreateNestedManyWithoutCreatedByInput
@@ -26350,6 +31075,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
     LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutUserInput
     MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
     PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
@@ -26386,6 +31112,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -26406,6 +31133,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -26437,6 +31165,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
     posts?: PostUpdateManyWithoutCreatedByNestedInput
@@ -26457,11 +31186,329 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
     LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutUserNestedInput
     MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
     PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
     Reservation?: ReservationUncheckedUpdateManyWithoutUserNestedInput
     ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordUncheckedUpdateManyWithoutUser_ScoreRecord_opponentIdToUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MatchGameCreateWithoutMatchSessionInput = {
+    id: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchGamePlayer?: MatchGamePlayerCreateNestedManyWithoutMatchGameInput
+  }
+
+  export type MatchGameUncheckedCreateWithoutMatchSessionInput = {
+    id: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchGamePlayer?: MatchGamePlayerUncheckedCreateNestedManyWithoutMatchGameInput
+  }
+
+  export type MatchGameCreateOrConnectWithoutMatchSessionInput = {
+    where: MatchGameWhereUniqueInput
+    create: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput>
+  }
+
+  export type MatchGameCreateManyMatchSessionInputEnvelope = {
+    data: MatchGameCreateManyMatchSessionInput | MatchGameCreateManyMatchSessionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MatchGameUpsertWithWhereUniqueWithoutMatchSessionInput = {
+    where: MatchGameWhereUniqueInput
+    update: XOR<MatchGameUpdateWithoutMatchSessionInput, MatchGameUncheckedUpdateWithoutMatchSessionInput>
+    create: XOR<MatchGameCreateWithoutMatchSessionInput, MatchGameUncheckedCreateWithoutMatchSessionInput>
+  }
+
+  export type MatchGameUpdateWithWhereUniqueWithoutMatchSessionInput = {
+    where: MatchGameWhereUniqueInput
+    data: XOR<MatchGameUpdateWithoutMatchSessionInput, MatchGameUncheckedUpdateWithoutMatchSessionInput>
+  }
+
+  export type MatchGameUpdateManyWithWhereWithoutMatchSessionInput = {
+    where: MatchGameScalarWhereInput
+    data: XOR<MatchGameUpdateManyMutationInput, MatchGameUncheckedUpdateManyWithoutMatchSessionInput>
+  }
+
+  export type MatchGameScalarWhereInput = {
+    AND?: MatchGameScalarWhereInput | MatchGameScalarWhereInput[]
+    OR?: MatchGameScalarWhereInput[]
+    NOT?: MatchGameScalarWhereInput | MatchGameScalarWhereInput[]
+    id?: StringFilter<"MatchGame"> | string
+    sessionId?: StringFilter<"MatchGame"> | string
+    gameNumber?: IntFilter<"MatchGame"> | number
+    status?: StringFilter<"MatchGame"> | string
+    winner?: IntNullableFilter<"MatchGame"> | number | null
+    createdAt?: DateTimeFilter<"MatchGame"> | Date | string
+    updatedAt?: DateTimeFilter<"MatchGame"> | Date | string
+  }
+
+  export type MatchSessionCreateWithoutMatchGameInput = {
+    id: string
+    name: string
+    date: Date | string
+    playerCount: number
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchSessionUncheckedCreateWithoutMatchGameInput = {
+    id: string
+    name: string
+    date: Date | string
+    playerCount: number
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchSessionCreateOrConnectWithoutMatchGameInput = {
+    where: MatchSessionWhereUniqueInput
+    create: XOR<MatchSessionCreateWithoutMatchGameInput, MatchSessionUncheckedCreateWithoutMatchGameInput>
+  }
+
+  export type MatchGamePlayerCreateWithoutMatchGameInput = {
+    id: string
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+    User?: UserCreateNestedOneWithoutMatchGamePlayerInput
+  }
+
+  export type MatchGamePlayerUncheckedCreateWithoutMatchGameInput = {
+    id: string
+    userId?: string | null
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerCreateOrConnectWithoutMatchGameInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    create: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput>
+  }
+
+  export type MatchGamePlayerCreateManyMatchGameInputEnvelope = {
+    data: MatchGamePlayerCreateManyMatchGameInput | MatchGamePlayerCreateManyMatchGameInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MatchSessionUpsertWithoutMatchGameInput = {
+    update: XOR<MatchSessionUpdateWithoutMatchGameInput, MatchSessionUncheckedUpdateWithoutMatchGameInput>
+    create: XOR<MatchSessionCreateWithoutMatchGameInput, MatchSessionUncheckedCreateWithoutMatchGameInput>
+    where?: MatchSessionWhereInput
+  }
+
+  export type MatchSessionUpdateToOneWithWhereWithoutMatchGameInput = {
+    where?: MatchSessionWhereInput
+    data: XOR<MatchSessionUpdateWithoutMatchGameInput, MatchSessionUncheckedUpdateWithoutMatchGameInput>
+  }
+
+  export type MatchSessionUpdateWithoutMatchGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchSessionUncheckedUpdateWithoutMatchGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    playerCount?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerUpsertWithWhereUniqueWithoutMatchGameInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    update: XOR<MatchGamePlayerUpdateWithoutMatchGameInput, MatchGamePlayerUncheckedUpdateWithoutMatchGameInput>
+    create: XOR<MatchGamePlayerCreateWithoutMatchGameInput, MatchGamePlayerUncheckedCreateWithoutMatchGameInput>
+  }
+
+  export type MatchGamePlayerUpdateWithWhereUniqueWithoutMatchGameInput = {
+    where: MatchGamePlayerWhereUniqueInput
+    data: XOR<MatchGamePlayerUpdateWithoutMatchGameInput, MatchGamePlayerUncheckedUpdateWithoutMatchGameInput>
+  }
+
+  export type MatchGamePlayerUpdateManyWithWhereWithoutMatchGameInput = {
+    where: MatchGamePlayerScalarWhereInput
+    data: XOR<MatchGamePlayerUpdateManyMutationInput, MatchGamePlayerUncheckedUpdateManyWithoutMatchGameInput>
+  }
+
+  export type MatchGameCreateWithoutMatchGamePlayerInput = {
+    id: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    MatchSession: MatchSessionCreateNestedOneWithoutMatchGameInput
+  }
+
+  export type MatchGameUncheckedCreateWithoutMatchGamePlayerInput = {
+    id: string
+    sessionId: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchGameCreateOrConnectWithoutMatchGamePlayerInput = {
+    where: MatchGameWhereUniqueInput
+    create: XOR<MatchGameCreateWithoutMatchGamePlayerInput, MatchGameUncheckedCreateWithoutMatchGamePlayerInput>
+  }
+
+  export type UserCreateWithoutMatchGamePlayerInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    LessonReservation?: LessonReservationCreateNestedManyWithoutUserInput
+    LessonSlot?: LessonSlotCreateNestedManyWithoutUserInput
+    MatchRequest?: MatchRequestCreateNestedManyWithoutUserInput
+    PlayerProfile?: PlayerProfileCreateNestedOneWithoutUserInput
+    posts?: PostCreateNestedManyWithoutCreatedByInput
+    Reservation?: ReservationCreateNestedManyWithoutUserInput
+    ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordCreateNestedManyWithoutUser_ScoreRecord_opponentIdToUserInput
+    ScoreRecord_ScoreRecord_playerIdToUser?: ScoreRecordCreateNestedManyWithoutUser_ScoreRecord_playerIdToUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMatchGamePlayerInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    passwordHash?: string | null
+    role?: $Enums.Role
+    userId?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    LessonReservation?: LessonReservationUncheckedCreateNestedManyWithoutUserInput
+    LessonSlot?: LessonSlotUncheckedCreateNestedManyWithoutUserInput
+    MatchRequest?: MatchRequestUncheckedCreateNestedManyWithoutUserInput
+    PlayerProfile?: PlayerProfileUncheckedCreateNestedOneWithoutUserInput
+    posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
+    Reservation?: ReservationUncheckedCreateNestedManyWithoutUserInput
+    ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordUncheckedCreateNestedManyWithoutUser_ScoreRecord_opponentIdToUserInput
+    ScoreRecord_ScoreRecord_playerIdToUser?: ScoreRecordUncheckedCreateNestedManyWithoutUser_ScoreRecord_playerIdToUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMatchGamePlayerInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMatchGamePlayerInput, UserUncheckedCreateWithoutMatchGamePlayerInput>
+  }
+
+  export type MatchGameUpsertWithoutMatchGamePlayerInput = {
+    update: XOR<MatchGameUpdateWithoutMatchGamePlayerInput, MatchGameUncheckedUpdateWithoutMatchGamePlayerInput>
+    create: XOR<MatchGameCreateWithoutMatchGamePlayerInput, MatchGameUncheckedCreateWithoutMatchGamePlayerInput>
+    where?: MatchGameWhereInput
+  }
+
+  export type MatchGameUpdateToOneWithWhereWithoutMatchGamePlayerInput = {
+    where?: MatchGameWhereInput
+    data: XOR<MatchGameUpdateWithoutMatchGamePlayerInput, MatchGameUncheckedUpdateWithoutMatchGamePlayerInput>
+  }
+
+  export type MatchGameUpdateWithoutMatchGamePlayerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchSession?: MatchSessionUpdateOneRequiredWithoutMatchGameNestedInput
+  }
+
+  export type MatchGameUncheckedUpdateWithoutMatchGamePlayerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutMatchGamePlayerInput = {
+    update: XOR<UserUpdateWithoutMatchGamePlayerInput, UserUncheckedUpdateWithoutMatchGamePlayerInput>
+    create: XOR<UserCreateWithoutMatchGamePlayerInput, UserUncheckedCreateWithoutMatchGamePlayerInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMatchGamePlayerInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMatchGamePlayerInput, UserUncheckedUpdateWithoutMatchGamePlayerInput>
+  }
+
+  export type UserUpdateWithoutMatchGamePlayerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    LessonReservation?: LessonReservationUpdateManyWithoutUserNestedInput
+    LessonSlot?: LessonSlotUpdateManyWithoutUserNestedInput
+    MatchRequest?: MatchRequestUpdateManyWithoutUserNestedInput
+    PlayerProfile?: PlayerProfileUpdateOneWithoutUserNestedInput
+    posts?: PostUpdateManyWithoutCreatedByNestedInput
+    Reservation?: ReservationUpdateManyWithoutUserNestedInput
+    ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordUpdateManyWithoutUser_ScoreRecord_opponentIdToUserNestedInput
+    ScoreRecord_ScoreRecord_playerIdToUser?: ScoreRecordUpdateManyWithoutUser_ScoreRecord_playerIdToUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMatchGamePlayerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    LessonReservation?: LessonReservationUncheckedUpdateManyWithoutUserNestedInput
+    LessonSlot?: LessonSlotUncheckedUpdateManyWithoutUserNestedInput
+    MatchRequest?: MatchRequestUncheckedUpdateManyWithoutUserNestedInput
+    PlayerProfile?: PlayerProfileUncheckedUpdateOneWithoutUserNestedInput
+    posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
+    Reservation?: ReservationUncheckedUpdateManyWithoutUserNestedInput
+    ScoreRecord_ScoreRecord_opponentIdToUser?: ScoreRecordUncheckedUpdateManyWithoutUser_ScoreRecord_opponentIdToUserNestedInput
+    ScoreRecord_ScoreRecord_playerIdToUser?: ScoreRecordUncheckedUpdateManyWithoutUser_ScoreRecord_playerIdToUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -26495,6 +31542,16 @@ export namespace Prisma {
     startTime: string
     endTime: string
     duration: string
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerCreateManyUserInput = {
+    id: string
+    gameId: string
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
     createdAt?: Date | string
   }
 
@@ -26644,6 +31701,36 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGame?: MatchGameUpdateOneRequiredWithoutMatchGamePlayerNestedInput
+  }
+
+  export type MatchGamePlayerUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameId?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameId?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -26917,6 +32004,84 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGameCreateManyMatchSessionInput = {
+    id: string
+    gameNumber: number
+    status?: string
+    winner?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MatchGameUpdateWithoutMatchSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGamePlayer?: MatchGamePlayerUpdateManyWithoutMatchGameNestedInput
+  }
+
+  export type MatchGameUncheckedUpdateWithoutMatchSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    MatchGamePlayer?: MatchGamePlayerUncheckedUpdateManyWithoutMatchGameNestedInput
+  }
+
+  export type MatchGameUncheckedUpdateManyWithoutMatchSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    winner?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerCreateManyMatchGameInput = {
+    id: string
+    userId?: string | null
+    playerName: string
+    team: number
+    position: number
+    score?: number | null
+    createdAt?: Date | string
+  }
+
+  export type MatchGamePlayerUpdateWithoutMatchGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    User?: UserUpdateOneWithoutMatchGamePlayerNestedInput
+  }
+
+  export type MatchGamePlayerUncheckedUpdateWithoutMatchGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MatchGamePlayerUncheckedUpdateManyWithoutMatchGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    team?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    score?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
